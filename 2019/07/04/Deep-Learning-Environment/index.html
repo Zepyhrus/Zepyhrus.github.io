@@ -55,28 +55,32 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS Nvidia Tesla P40 24G/Nvidia Quadro P2000 8G CUDA 10.0 CUDNN 7.6.1 for CUDA 10.0 opencv 3.4.5 tensorflow-gpu 1.12.0 caffe 1.0,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep Learning Environment">
+<meta property="og:url" content="http://yoursite.com/2019/07/04/Deep-Learning-Environment/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS Nvidia Tesla P40 24G/Nvidia Quadro P2000 8G CUDA 10.0 CUDNN 7.6.1 for CUDA 10.0 opencv 3.4.5 tensorflow-gpu 1.12.0 caffe 1.0,">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-14T09:26:31.962Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-  <link rel="canonical" href="http://yoursite.com/">
+<meta name="twitter:title" content="Deep Learning Environment">
+<meta name="twitter:description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS Nvidia Tesla P40 24G/Nvidia Quadro P2000 8G CUDA 10.0 CUDNN 7.6.1 for CUDA 10.0 opencv 3.4.5 tensorflow-gpu 1.12.0 caffe 1.0,">
+  <link rel="canonical" href="http://yoursite.com/2019/07/04/Deep-Learning-Environment/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Hexo</title>
+  <title>Deep Learning Environment | Hexo</title>
   
 
 
@@ -180,326 +184,11 @@
         <div class="content-wrap">
             
 
-          <div id="content" class="content page-home">
-            
-  <section id="posts" class="posts-expand">
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/14/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zepyhrus">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/08/14/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-08-14 17:15:45" itemprop="dateCreated datePublished" datetime="2019-08-14T17:15:45+08:00">2019-08-14</time>
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/23/CPP-Primer-Notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zepyhrus">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/07/23/CPP-Primer-Notes/" class="post-title-link" itemprop="url">CPP-Primer-Notes</a>
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-07-23 00:00:00" itemprop="dateCreated datePublished" datetime="2019-07-23T00:00:00+08:00">2019-07-23</time>
-            </span>
-          
+          <div id="content" class="content page-post-detail">
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-14 17:26:31" itemprop="dateModified" datetime="2019-08-14T17:26:31+08:00">2019-08-14</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
+  <div id="posts" class="posts-expand">
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <h2 id="Cpp-Primer-Notes"><a href="#Cpp-Primer-Notes" class="headerlink" title="Cpp Primer Notes"></a>Cpp Primer Notes</h2><p>This a implementation of some of the exercises from the book: C++ Primer. And also some notes from the book. The github source could be found <a href="https://github.com/Zepyhrus/CPP-Primer" target="_blank" rel="noopener">here</a>.</p>
-<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>Ubuntu 18.04 LTS<br>gcc/g++: 5.5<br>vscode: 1.35.0, x64</p>
-<h2 id="1-4-Flow-of-control"><a href="#1-4-Flow-of-control" class="headerlink" title="1.4 Flow of control"></a>1.4 Flow of control</h2><h3 id="1-4-1-The-While-statement"><a href="#1-4-1-The-While-statement" class="headerlink" title="1.4.1 The While statement"></a>1.4.1 The While statement</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> b = ++a;  <span class="comment">// a + 1 before assigned to b, cal after a + 1;</span></span><br><span class="line"><span class="keyword">int</span> c = a++;  <span class="comment">// a + 1 after assigned to c, cal before a + 1;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="1-4-3-Reading-an-Unknown-Number-of-INputs"><a href="#1-4-3-Reading-an-Unknown-Number-of-INputs" class="headerlink" title="1.4.3 Reading an Unknown Number of INputs"></a>1.4.3 Reading an Unknown Number of INputs</h3><ul>
-<li>The end of input is CTRL + d;</li>
-<li>It is a good practice to recompile the code after each fix – or after making at most a small number of obvious fixes. This is called <strong>edit-compile-debug</strong>.</li>
-<li>exercise at input_if.cc</li>
-</ul>
-<h2 id="1-5-Introducing-Classes"><a href="#1-5-Introducing-Classes" class="headerlink" title="1.5 Introducing Classes"></a>1.5 Introducing Classes</h2><ol>
-<li>Memeber function: a function that is defined as part of a class, sometimes referred to as <strong>methods</strong>;</li>
-<li><code>()</code>: the <code>call</code> operator;</li>
-</ol>
-<ul>
-<li>Uninitialized variables are a rich source of bugs;</li>
-</ul>
-<h2 id="Chapter-2-Varibales-and-Basic-Types"><a href="#Chapter-2-Varibales-and-Basic-Types" class="headerlink" title="Chapter 2 Varibales and Basic Types"></a>Chapter 2 Varibales and Basic Types</h2><p>Some languages, such as Smalltalk and Python, check types at run time. In contrast, C++ is a statically typed language: type checking is done at compile time.<br>As a consequence, the compiler must know the type of every name used in the program.</p>
-<p><strong>Types determine</strong> the meaning of the data and operations in our programs.</p>
-<h2 id="2-1-Primitive-Built-in-Types"><a href="#2-1-Primitive-Built-in-Types" class="headerlink" title="2.1 Primitive Built-in Types"></a>2.1 Primitive Built-in Types</h2><p>Includes <strong>arithmetic types</strong> and <code>void</code>. The <code>void</code> type has no associated values and can be used in only a few circumestances.</p>
-<h3 id="2-1-1-Arithmetic-Types"><a href="#2-1-1-Arithmetic-Types" class="headerlink" title="2.1.1 Arithmetic Types"></a>2.1.1 Arithmetic Types</h3><p>Includes <strong>integral types</strong> and <strong>floating-point types</strong>. The standard guarantees minimum sizes of different type. Different compiler are allowed to use larger sizes for these tyes.  </p>
-<ul>
-<li>Q: What is significant digits?</li><li>A: Effective decimal numbers<ul></ul></li>
-<li><strong>float</strong> has 6 significant digits minimum;</li>
-<li><strong>double</strong> has 10 signifiicant digits minimum;</li>
-</ul>
-<p>A <code>char</code> is the same size as a single machine <code>byte</code>. A “word” si referred to a small number of bytes. Most computers a byte contains 8 bits and a word is either 32 or 63 bits, that is, 4 or 8 bytes.</p>
-<p>The <strong>Type</strong> determins how many bits are used and how to interpret those bits.</p>
-<p><strong>Signed an Unsigned Types</strong><br>The types <code>int</code>, <code>short</code>, <code>long</code>, <code>long long</code> are all signed. The type <code>unsigned int</code> may be abbreviated as <code>unsigned</code>.</p>
-<p>There are 3 distinct basic character types: <code>char</code>, <code>unsigned char</code>, <code>signed char</code>. Which of the other two character representatinos is equivalent to <code>char</code> depends on the compiler.  </p>
-<p>IN an unsigned type, all the bits represent the value. An 8-bit <code>unsigned</code> char can hold the values from 0 through 255 inclusize. An 8-bit <code>signed</code> char is guaranteed to be able to hold values from -127 through 127. Most modern machines use representations that allow values from -128 through 127.</p>
-<ul>
-<li>Do not use plain <code>char</code> or <code>bool</code> in arithmetic expressions. Use them <strong>only</strong> to hold characters or thuth values. Computtations using <code>char</code> are especially problematic because <code>char</code> is signed on some machines and <code>unsigned</code> on others.</li>
-<li>Use <code>double</code> for floating-point computatins. <code>float</code> usually odes not have enough precision and the cosst of double-percision calculations versus single-precision is negligible. In fact, on some machines, <strong>double-precision operations are faster than single</strong>[P34].</li>
-</ul>
-<h3 id="2-1-2-Type-Conversions"><a href="#2-1-2-Type-Conversions" class="headerlink" title="2.1.2 Type Conversions"></a>2.1.2 Type Conversions</h3><ol>
-<li>non<code>bool</code> arithmetic types to a <code>bool</code> object, the result is <code>false</code> if the value is 0 and <code>true</code> otherwise;</li>
-<li><code>bool true</code> is 1 and <code>bool false</code> is 0;</li>
-<li>Assigning a floating-point value to an object of integral type, the value is truncated.</li>
-<li>When an integral value to an object of floating-point type, the frational part is zero. Precision may be lost ifg the integer has more bits than the floating-point object can accommodate.  </li>
-<li>OOR (out-of-range) value to unsigned type, the result is the remainder of the value modulo the number of values the target type can hold.</li>
-<li>OOR value to signed type, the reult is <strong>undefined</strong>. Undefined behavior results from errors that the compiler is not requierd to detect.</li>
-</ol>
-<h3 id="2-1-3-Literals"><a href="#2-1-3-Literals" class="headerlink" title="2.1.3 Literals"></a>2.1.3 Literals</h3><p><strong>Integer and Floating-Point Literals</strong>：</p>
-<ul>
-<li>decimal: You should know what a decimal is you stpuid fuck;</li>
-<li>octal: Integer literals that begin with 0, for example 024;</li>
-<li>hexadecimal: Integer literals that begin with 0x or 0X;</li>
-</ul>
-<p><strong>Note</strong>: For a negative decimal literal, -42, the minus sign is <strong>not</strong> part of the literal, the minus sign is an operator that negates the value of its (literal) operand.</p>
-<p><strong>Character and Character String Literals</strong>：<br>The compiler appends a null character (<code>\0</code>) to every string literal. Thus the actual size of a string literal is one more than its apparent size.</p>
-<p><strong>Escape Sequences</strong>：An <strong>escape sequence</strong> begins with a backslash.  </p>
-<p><strong>Specifying the Type of a Literal</strong><br>We can override the default type of an integer, floating-point, or character lietral by supylying a suffix or prefix from Table 2.2 [P40];</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">42U</span>LL     <span class="comment">// unsigned integer litearal, type is unsigned long long</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>Boolean and Pointer Literals</strong>:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> test = <span class="literal">false</span>;  <span class="comment">// true or false are literals of type bool;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-2-Variables"><a href="#2-2-Variables" class="headerlink" title="2.2 Variables"></a>2.2 Variables</h2><h3 id="2-2-1-Variable-Definitions"><a href="#2-2-1-Variable-Definitions" class="headerlink" title="2.2.1 Variable Definitions"></a>2.2.1 Variable Definitions</h3><p>Most generally, an object is a region of memory that can contain data and has a type.</p>
-<p><strong>Initilaizer</strong>: An object gets the specified value at the moment it is created.</p>
-<p>The initialization an d assignment are different operations in C++. Initialization happens when a variable is given a value when it is created. Assignment obliterates an object’s current value and replaces that value with a new one.</p>
-<p><strong>List Initialization</strong>:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> units_sold = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> units_sold&#123;<span class="number">0</span>&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>The curly braces for initializeation was introduced as part of the new standard, which is referred to as <strong>list initalization</strong>.</p>
-<p><strong>Import</strong>: this form of initialization will not be allowed if the initializer might lead to the loss of information by compiler.</p>
-<p><strong>Default INitialization</strong>:<br>When a varibale is defined without an initializer, it is <strong>default initialized</strong>. One excpetion, variables of built-in type defined inside a function are <strong>uninitialized</strong>.</p>
-<h3 id="2-2-2-Variable-Declarations-and-Definitions"><a href="#2-2-2-Variable-Declarations-and-Definitions" class="headerlink" title="2.2.2 Variable Declarations and Definitions"></a>2.2.2 Variable Declarations and Definitions</h3><p>Use <code>extern</code> to explict declare variable without defination. It is an error to provide an initializer on an <code>extern</code> inside a function. <code>extern</code> with an initializer is an defination.  </p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> i;  <span class="comment">// declares but does not define i</span></span><br><span class="line"><span class="keyword">int</span> j;         <span class="comment">// declares and defines j</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>Note</strong>: Varibales must be defined exactly once but can be declared many times.</p>
-<h3 id="2-2-3-Identifiers"><a href="#2-2-3-Identifiers" class="headerlink" title="2.2.3 Identifiers"></a>2.2.3 Identifiers</h3><ul>
-<li>The identifier in programs may not contain two consective underscores;</li>
-<li>Nor can an identifier begin with an underscore followed immediately by an uppercase letter;</li>
-<li>Identifiers defined outside a function may not begin with an underscore.</li>
-</ul>
-<h3 id="2-2-4-Scope-of-a-Name"><a href="#2-2-4-Scope-of-a-Name" class="headerlink" title="2.2.4 Scope of a Name"></a>2.2.4 Scope of a Name</h3><p><strong>Nested Scopes</strong>: The global scope has no name, hence when the scope operator has an empty left-hand side, it is a request to fetch the name on the right-hand side from the global scope.</p>
-<h2 id="2-3-Compound-Types"><a href="#2-3-Compound-Types" class="headerlink" title="2.3 Compound Types"></a>2.3 Compound Types</h2><p>A <strong>compound type</strong> is a type thas is defined in terms of another type, including <strong>references</strong> and <strong>pointers</strong>.<br>A declaration is a <strong>base type</strong> followed by a list of <strong>declarators</strong>.</p>
-<h3 id="2-3-1-References"><a href="#2-3-1-References" class="headerlink" title="2.3.1 References"></a>2.3.1 References</h3><p><strong>Reference</strong> refers to “lvalue reference”, instead of “rvalue reference” introduced in new standard. A <strong>reference</strong> defines an alternative name for an object.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival = <span class="number">1024</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;amp;refVal = ival;</span><br><span class="line"><span class="keyword">int</span> &amp;amp;refVal2;</span><br></pre></td></tr></table></figure>
-
-<p><strong>A Reference Is an Alias</strong><br>The reference is <strong>bound</strong> to its initializer, and there is no way to rebind a reference to refer to a different object. A reference <strong>must</strong> be initialized.<br>A reference is just another name for an already existing object.<br>After a reference has been defined, <strong>all</strong> operations on that reference are actuall operations on the object to which the reference is bound.</p>
-<p><strong>Reference Denfinitions</strong><br>With 2 exceptions that will be covered in S 2.4.1 and 15.2.3, the type of reference and the obect to which the reference refers must match exactly. A reference may be bound only to an object, not to a literal or to the result of a more general experession.<br>[cmake]  </p>
-<h3 id="2-3-2-Pointers"><a href="#2-3-2-Pointers" class="headerlink" title="2.3.2 Pointers"></a>2.3.2 Pointers</h3><p>A <strong>Pointer</strong> is a compound type that “points to” another type.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *ip1, *ip2;</span><br><span class="line"><span class="keyword">double</span> dp, *dp2;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Taking the Address of an Object</strong><br>A poiter holds the address of another object. We get the address of an object by usin the address-of operator (the <strong>&amp; operator</strong>).</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> *p = &amp;amp;ival;  <span class="comment">// p holds the address of ival; p is a pointer to ival</span></span><br></pre></td></tr></table></figure>
-
-<p>With 2 excpetion will be covered in S:2.4.2 and S:15.2.3, the typees of the pointer and the object ot which it points must muatch.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> dval;</span><br><span class="line"><span class="keyword">double</span> *pd = &amp;amp;dval;</span><br><span class="line"><span class="keyword">double</span> *pd2 = pd;</span><br><span class="line"><span class="keyword">int</span> *pi = pd;</span><br><span class="line">pi = &amp;amp;dval;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Point Value</strong><br>The walue (i.e., the address) stored in a pointer can be in one of four states:</p>
-<ol>
-<li>An object;</li>
-<li>The location just immediately past the end of an object;</li>
-<li>A unll pointer, indicating that is is not bound to any object;</li>
-<li>Invalid, values other than the preceding three are invalid.</li>
-</ol>
-<p><strong>Using a Pointer to Access an Object</strong><br>Ust the dereference operator (the ***** operator) to access the object:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> *p = *ival;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &amp;lt;&amp;lt; *p;</span><br></pre></td></tr></table></figure>
-
-<p>Dereferencoing a pointer yields the object ot which the pointer points.</p>
-<p><strong>Note</strong>: Some symbols have multiple meannings</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;amp;r = i;</span><br><span class="line"><span class="keyword">int</span> *p;</span><br><span class="line">p = &amp;amp;i;         <span class="comment">//  &amp;amp; used as the address-of operation</span></span><br><span class="line">*p = i          <span class="comment">//  * used as dereference operation</span></span><br><span class="line"><span class="keyword">int</span> &amp;amp;r2 = *p;   <span class="comment">//  &amp;amp; as part of the declaration, * as derefernec operation</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>Null Pointer</strong>:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p1 = <span class="literal">nullptr</span>;</span><br><span class="line"><span class="keyword">int</span> *p2 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* must #include cstdlib */</span></span><br><span class="line"><span class="keyword">int</span> *p3 = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
-
-<p>Older programs sometimes use a <strong>preprocessor variable</strong> named <code>NULL</code>, which the <code>cstdlib</code> header defines as 0. A <strong>preprocessor</strong> is a program that runs before the compiler. Preprocessor varibales are managed by the preprocessor, and are not part of the <code>std</code> namespace.</p>
-<p><strong>Assignment and Pointers</strong><br>A reference is not an object.  </p>
-<p><strong>Other Pointer Operations</strong><br>Any nonzero pointer evalutaes as <code>true</code>. Two pointers are equal if they hold the same address or both are null pointers. In continously memory, a pointer one past the end of a different object ot heldo the same ddress as a pointer to an object.</p>
-<p><strong><code>void*</code> Pointers</strong><br>The type <code>void*</code> is a special pointer type that can hold the address of any object, it holds an address but the type of the object at that address is unknown. Generally, a <code>void*</code> pointer is used to dieal with memory as memory, rather than using the pointer to access the object stored in that memory.</p>
-<h3 id="2-3-3-Understanding-Compound-Type-Declarations"><a href="#2-3-3-Understanding-Compound-Type-Declarations" class="headerlink" title="2.3.3 Understanding Compound Type Declarations"></a>2.3.3 Understanding Compound Type Declarations</h3><p><strong>Defining Multiple Variable</strong>: It could be really confusing, put whitespace between the type modifier and the name being declared. Use <strong>First Style</strong> to declare variables.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>* p1, p2;  <span class="comment">//  p1 is a pointer to int; p2 is an int</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>Pointer to Pointers</strong>: We indicate each pointer level by its own <em>. *</em> for a pointer to a pointer, *** for a pointer to a pointer to a pointer.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival = <span class="number">1024</span>;</span><br><span class="line"><span class="keyword">int</span> * pi = &amp;amp;ival;   <span class="comment">//  pi points to an int</span></span><br><span class="line"><span class="keyword">int</span> **ppi = &amp;amp;pi;    <span class="comment">//  ppi points to a pointer points to an int</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span> &amp;lt;&amp;lt; <span class="string">"The value of ival\n"</span></span><br><span class="line">     &amp;lt;&amp;lt; <span class="string">"direct value: "</span> &amp;lt;&amp;lt; ival &amp;lt;&amp;lt; <span class="string">"\n"</span></span><br><span class="line">     &amp;lt;&amp;lt; <span class="string">"indirect value: "</span> &amp;lt;&amp;lt; *pi &amp;lt;&amp;lt; <span class="string">"\n"</span></span><br><span class="line">     &amp;lt;&amp;lt; <span class="string">"doubly indirect value: "</span> &amp;lt;&amp;lt; **ppi  <span class="comment">// deference twice</span></span><br><span class="line">     &amp;lt;&amp;lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Reference to Pointers</strong>: A reference is not an object. Hence we may not have a pointer to a reference. But we can define a reference to a pointer.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> val = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> *pi;</span><br><span class="line"><span class="keyword">int</span> *&amp;amp;r = pi; <span class="comment">//  r is a reference to pi</span></span><br><span class="line">r = &amp;amp;val; <span class="comment">// r is a reference, assign to r equals to assigning to pi</span></span><br><span class="line">*r = <span class="number">0</span>; <span class="comment">//  dereference r yields i, this is assigning i to be 0</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>Notes</strong>: As illustrate above, you can use <code>**pi</code> to indicate a pointer pointing to a pointer, but you can’t use <code>&amp;amp;&amp;amp;p</code> to indicate a reference refering to a reference, cause reference is not a project.</p>
-<h2 id="const-Qualifier"><a href="#const-Qualifier" class="headerlink" title="const Qualifier"></a>const Qualifier</h2><p>Since wo can’t change the value of <code>const</code>, it must be initialized.</p>
-<p><strong>By Default, <code>const</code> Objects Are Local to a File</strong>: When a <code>const</code> object is initialized from a compile-time constant, the compiler will usually repalce uses of the varibale with its corresponding value during compilation. When we define a <code>const</code> with the same name in multiple files, it is as if we had written definitions for separate variables in each file. If a single instance of a <code>const</code> variable, we use the keyword <code>extern</code> on both its definition and declaration(s).</p>
-<p>e.g., if you what to share <code>const</code> accross different files, you must define the varibale as <code>extern</code>.</p>
-<h3 id="2-4-1-Reference-to-const"><a href="#2-4-1-Reference-to-const" class="headerlink" title="2.4.1 Reference to const"></a>2.4.1 Reference to const</h3><p>A reference to <code>const</code> cannot be used to change the object to which the reference is bound.<br><strong>TERMINOLOGY</strong>: <code>const</code> Reference is a reference to <code>const</code>.</p>
-<p><strong>Initialization and References to <code>const</code></strong>: One of the 2 exceptions to the rule that the type of a reference must match the type  of the object to which it refers: we can initialize a reference to <code>const</code> from any expression that can be converted to the type of the reference.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;amp;r1 = i;        <span class="comment">//  we can bind a const int&amp;amp; to a plain</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;amp;r2 = <span class="number">42</span>;       <span class="comment">//  ok: r1 is a reference to const</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;amp;r3 = r1 * <span class="number">2</span>;   <span class="comment">//  ok: r3 is a reference to const</span></span><br><span class="line"><span class="keyword">int</span> &amp;amp;r4 = r1 * <span class="number">2</span>;         <span class="comment">//  error: r4 is a nonconst reference</span></span><br></pre></td></tr></table></figure>
-
-<p><strong>Important: AReference to <code>const</code> May Refer to an Object That is Not <code>const</code></strong>:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;amp;r1 = i;        <span class="comment">//  r1 bound to i</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;amp;r2 = i;  <span class="comment">//  r2 also bound to i; but connot be used to change i;</span></span><br><span class="line">r1 = <span class="number">0</span>;             <span class="comment">//  r1 is not const; i is now 0</span></span><br><span class="line">r2 = <span class="number">0</span>;             <span class="comment">//  error: r2 is a reference to const</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="2-4-2-Pointers-and-const"><a href="#2-4-2-Pointers-and-const" class="headerlink" title="2.4.2 Pointers and const"></a>2.4.2 Pointers and const</h3><p>Like a reference to <code>cost</code>, a pointer to const may not be used to change the object to which the pointer points.<br><strong>Important</strong>: There is no guarantee that an object pointed to by a pointer to <code>const</code> won’t change.</p>
-<p><strong><code>const</code> Pointers</strong>: We indicate that the pointer is <code>const</code> by putting the <code>const</code> after *.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> errNumb = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> *<span class="keyword">const</span> curErr = &amp;amp;errNumb;     <span class="comment">//  curErr will always point to errNumb</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="number">3.14159</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> *<span class="keyword">const</span> pip = &amp;amp;pi;    <span class="comment">//  pip is a const pointer to a const object</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Acknowledgmets"><a href="#Acknowledgmets" class="headerlink" title="Acknowledgmets"></a>Acknowledgmets</h2><ul>
-<li>With all respect to Mr. Zeng Xianliang, my colleague, who introduced this stunning book to me which he himself never really read it thoughly;</li>
-<li>Full respect to the author of the book: Cpp Primer, Stanley B. Lippman, Josee Lajoie, Barbara E. Moo. Their great works perserves;</li>
-<li>Didn’t came up who else is helping me with it at current stage.</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-      
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
@@ -520,9 +209,8 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/07/04/Deep-Learning-Environment/" class="post-title-link" itemprop="url">Deep Learning Environment</a>
+          <h1 class="post-title" itemprop="name headline">Deep Learning Environment
+
             
           </h1>
         
@@ -565,8 +253,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
-            <p>Installation structions for configuration DL environment</p>
+        <p>Installation structions for configuration DL environment</p>
 <ul>
 <li>Ubuntu 18.04 LTS</li>
 <li>Nvidia Tesla P40 24G/Nvidia Quadro P2000 8G</li>
@@ -783,28 +470,43 @@ you shall make the file manually:</p>
 <li>chrome, it’s 21 century now, use some real fucking browser bro.</li>
 </ul>
 
-          
-        
-      
     </div>
 
     
     
     
+        
+      
+
       <footer class="post-footer">
-          <div class="post-eof"></div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/07/23/CPP-Primer-Notes/" rel="prev" title="CPP-Primer-Notes">
+                  CPP-Primer-Notes <i class="fa fa-chevron-right"></i>
+                </a>
+              
+            </div>
+          </div>
         
       </footer>
+    
   </div>
   
   
   
   </article>
 
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -823,8 +525,17 @@ you shall make the file manually:</p>
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -847,6 +558,23 @@ you shall make the file manually:</p>
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-system-dependency"><span class="nav-number">1.</span> <span class="nav-text">Install system dependency</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-Aliyun-source"><span class="nav-number">1.1.</span> <span class="nav-text">Add Aliyun source</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Refresh-system"><span class="nav-number">1.2.</span> <span class="nav-text">Refresh system</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-Nvidia-drivers"><span class="nav-number">2.</span> <span class="nav-text">Install Nvidia drivers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Disable-nouveau"><span class="nav-number">2.1.</span> <span class="nav-text">Disable nouveau</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-drivers"><span class="nav-number">2.2.</span> <span class="nav-text">Install drivers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reinstall-drivers"><span class="nav-number">2.3.</span> <span class="nav-text">Reinstall drivers</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-CUDA-10-0"><span class="nav-number">3.</span> <span class="nav-text">Install CUDA 10.0</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-cuda"><span class="nav-number">3.1.</span> <span class="nav-text">Install cuda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configure-system-path"><span class="nav-number">3.2.</span> <span class="nav-text">Configure system path</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test"><span class="nav-number">3.3.</span> <span class="nav-text">Test</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-CUDNN"><span class="nav-number">4.</span> <span class="nav-text">Install CUDNN</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-Anaconda"><span class="nav-number">5.</span> <span class="nav-text">Install Anaconda</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Anaconda-from-shell"><span class="nav-number">5.1.</span> <span class="nav-text">Install Anaconda from shell</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create-virtual-environment"><span class="nav-number">5.2.</span> <span class="nav-text">Create virtual environment</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-opencv"><span class="nav-number">6.</span> <span class="nav-text">Install opencv</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-dependencies"><span class="nav-number">6.1.</span> <span class="nav-text">Install dependencies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Make"><span class="nav-number">6.2.</span> <span class="nav-text">Make</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configure-bash"><span class="nav-number">6.3.</span> <span class="nav-text">Configure bash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test-1"><span class="nav-number">6.4.</span> <span class="nav-text">Test</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-caffe"><span class="nav-number">7.</span> <span class="nav-text">Install caffe</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Download"><span class="nav-number">7.1.</span> <span class="nav-text">Download</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuration"><span class="nav-number">7.2.</span> <span class="nav-text">Configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Make-and-test"><span class="nav-number">7.3.</span> <span class="nav-text">Make and test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-pycaffe"><span class="nav-number">7.4.</span> <span class="nav-text">Install pycaffe</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-tensorflow-gpu"><span class="nav-number">8.</span> <span class="nav-text">Install tensorflow-gpu</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Remove-old-env"><span class="nav-number">8.1.</span> <span class="nav-text">Remove old env</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-torch-gpu"><span class="nav-number">9.</span> <span class="nav-text">Install torch-gpu</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Remove-old-environment"><span class="nav-number">9.1.</span> <span class="nav-text">Remove old environment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-pylab"><span class="nav-number">9.2.</span> <span class="nav-text">Install pylab:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-from-source"><span class="nav-number">9.3.</span> <span class="nav-text">Install from source</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-dependencies-1"><span class="nav-number">9.4.</span> <span class="nav-text">Install dependencies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Get-PyTorch-Source"><span class="nav-number">9.5.</span> <span class="nav-text">Get PyTorch Source</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Install-mkl"><span class="nav-number">10.</span> <span class="nav-text">Install mkl</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Conclusion"><span class="nav-number">11.</span> <span class="nav-text">Conclusion</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Possibile-problem"><span class="nav-number">12.</span> <span class="nav-text">Possibile problem</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
     </div>
   </aside>
@@ -944,5 +672,9 @@ you shall make the file manually:</p>
 
 
   
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
 </body>
 </html>
