@@ -321,7 +321,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-14 17:35:19" itemprop="dateModified" datetime="2019-08-14T17:35:19+08:00">2019-08-14</time>
+                <time title="Modified: 2019-08-14 20:49:23" itemprop="dateModified" datetime="2019-08-14T20:49:23+08:00">2019-08-14</time>
               </span>
             
           
@@ -495,7 +495,18 @@
 
 <h3 id="2-5-2-The-auto-Type-Specifier"><a href="#2-5-2-The-auto-Type-Specifier" class="headerlink" title="2.5.2 The auto Type Specifier"></a>2.5.2 The <code>auto</code> Type Specifier</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> item = val1 + val2;</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-6-Deifining-Our-Own-Data-Structures"><a href="#2-6-Deifining-Our-Own-Data-Structures" class="headerlink" title="2.6 Deifining Our Own Data Structures"></a>2.6 Deifining Our Own Data Structures</h2><h2 id="Acknowledgmets"><a href="#Acknowledgmets" class="headerlink" title="Acknowledgmets"></a>Acknowledgmets</h2><ul>
+<h2 id="2-6-Deifining-Our-Own-Data-Structures"><a href="#2-6-Deifining-Our-Own-Data-Structures" class="headerlink" title="2.6 Deifining Our Own Data Structures"></a>2.6 Deifining Our Own Data Structures</h2><h3 id="2-6-1-Defining-the-Sales-data-Type"><a href="#2-6-1-Defining-the-Sales-data-Type" class="headerlink" title="2.6.1 Defining the Sales_data Type"></a>2.6.1 Defining the Sales_data Type</h3><p>The close curly that ends the class body must be fgollowed by a semicolon, so we can define varibales after the class body:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Sales_data</span> &#123;</span></span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">string</span> bookNo;</span><br><span class="line">  <span class="keyword">unsigned</span> units_sold = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">double</span> revenue = <span class="number">0.0</span>;</span><br><span class="line">&#125; accum, trans, *salesptr;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Class Data Members</strong>: A type of members in a struct.</p>
+<h3 id="2-6-2-Using-the-Sales-data-Class"><a href="#2-6-2-Using-the-Sales-data-Class" class="headerlink" title="2.6.2 Using the Sales_data Class"></a>2.6.2 Using the Sales_data Class</h3><h3 id="2-6-3-Wrinting-Our-Own-Header-Files"><a href="#2-6-3-Wrinting-Our-Own-Header-Files" class="headerlink" title="2.6.3 Wrinting Our Own Header Files"></a>2.6.3 Wrinting Our Own Header Files</h3><p>A header might be included more than twice, we need to write our headers in a way that is safe even if the header is included multiple time.</p>
+<p><strong>Note</strong>: Whenever a header is updated, the source files that use that header must be recompiled to get the new or changed declarations.</p>
+<p><strong>A Brief Introduction to the Preprocessor</strong>: The most common technique for making it safe to include a header multiple times relies on the <strong>preprocessor</strong>, which inherts from C is a progrom that runs before the compiler and changes the source text of our programs. <code>#include</code> is a processor.</p>
+<p><strong>WARNING</strong>: Preprocessor variable names do not respect C++ scoping rules.</p>
+<p><strong>Note</strong>: What is <strong>Header guards</strong> ?</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* header guards for sales data */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> SALES_DATA_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SALES_DATA_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>  SALES_DATA_H</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Acknowledgmets"><a href="#Acknowledgmets" class="headerlink" title="Acknowledgmets"></a>Acknowledgmets</h2><ul>
 <li>With all respect to Mr. Zeng Xianliang, my colleague, who introduced this stunning book to me which he himself never really read it thoughly;</li>
 <li>Full respect to the author of the book: Cpp Primer, Stanley B. Lippman, Josee Lajoie, Barbara E. Moo. Their great works perserves;</li>
 <li>Didn’t came up who else is helping me with it at current stage.</li>
@@ -570,7 +581,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-14 17:33:00" itemprop="dateModified" datetime="2019-08-14T17:33:00+08:00">2019-08-14</time>
+                <time title="Modified: 2019-08-14 17:42:09" itemprop="dateModified" datetime="2019-08-14T17:42:09+08:00">2019-08-14</time>
               </span>
             
           
@@ -659,7 +670,11 @@
 <li>Version = 10.0, NumDevs = 1</li>
 <li>Result = PASS</li>
 </ul>
-<h1 id="Install-CUDNN"><a href="#Install-CUDNN" class="headerlink" title="Install CUDNN"></a>Install CUDNN</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf cudnn-10.0-linux-x64-v7.6.1.34.tgz</span><br><span class="line"></span><br><span class="line">sudo cp cuda/include/cudnn.h /usr/local/cuda/include/</span><br><span class="line">sudo cp cuda/lib64/* /usr/local/cuda/lib64/</span><br></pre></td></tr></table></figure>
+<h1 id="Install-CUDNN"><a href="#Install-CUDNN" class="headerlink" title="Install CUDNN"></a>Install CUDNN</h1><p>Latest CUDNN could be installed through dpkg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -i libcudnn7_7.6.2.24-1+cuda10.0_amd64.deb</span><br></pre></td></tr></table></figure>
+
+<p>Or, you can install it from original file.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf cudnn-10.0-linux-x64-v7.6.1.34.tgz</span><br><span class="line"></span><br><span class="line">sudo cp cuda/include/cudnn.h /usr/local/cuda/include/</span><br><span class="line">sudo cp cuda/lib64/* /usr/local/cuda/lib64/</span><br></pre></td></tr></table></figure>
 
 <h1 id="Install-Anaconda"><a href="#Install-Anaconda" class="headerlink" title="Install Anaconda"></a>Install Anaconda</h1><p>Damn idiots, you should know how to install anaconda and its environment</p>
 <h2 id="Install-Anaconda-from-shell"><a href="#Install-Anaconda-from-shell" class="headerlink" title="Install Anaconda from shell"></a>Install Anaconda from shell</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash Anaconda3-2019.03-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>

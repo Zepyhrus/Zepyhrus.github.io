@@ -62,7 +62,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS, kernel version 5.0.0 (You may use uname -r to check your kernel version) Nvidia Tesla P40 24G/Tesla P4 8G/Nvidia Quadro P200">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-14T09:33:00.255Z">
+<meta property="og:updated_time" content="2019-08-14T09:42:09.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deep Learning Environment">
 <meta name="twitter:description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS, kernel version 5.0.0 (You may use uname -r to check your kernel version) Nvidia Tesla P40 24G/Tesla P4 8G/Nvidia Quadro P200">
@@ -237,7 +237,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-14 17:33:00" itemprop="dateModified" datetime="2019-08-14T17:33:00+08:00">2019-08-14</time>
+                <time title="Modified: 2019-08-14 17:42:09" itemprop="dateModified" datetime="2019-08-14T17:42:09+08:00">2019-08-14</time>
               </span>
             
           
@@ -325,7 +325,11 @@
 <li>Version = 10.0, NumDevs = 1</li>
 <li>Result = PASS</li>
 </ul>
-<h1 id="Install-CUDNN"><a href="#Install-CUDNN" class="headerlink" title="Install CUDNN"></a>Install CUDNN</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf cudnn-10.0-linux-x64-v7.6.1.34.tgz</span><br><span class="line"></span><br><span class="line">sudo cp cuda/include/cudnn.h /usr/local/cuda/include/</span><br><span class="line">sudo cp cuda/lib64/* /usr/local/cuda/lib64/</span><br></pre></td></tr></table></figure>
+<h1 id="Install-CUDNN"><a href="#Install-CUDNN" class="headerlink" title="Install CUDNN"></a>Install CUDNN</h1><p>Latest CUDNN could be installed through dpkg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -i libcudnn7_7.6.2.24-1+cuda10.0_amd64.deb</span><br></pre></td></tr></table></figure>
+
+<p>Or, you can install it from original file.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf cudnn-10.0-linux-x64-v7.6.1.34.tgz</span><br><span class="line"></span><br><span class="line">sudo cp cuda/include/cudnn.h /usr/local/cuda/include/</span><br><span class="line">sudo cp cuda/lib64/* /usr/local/cuda/lib64/</span><br></pre></td></tr></table></figure>
 
 <h1 id="Install-Anaconda"><a href="#Install-Anaconda" class="headerlink" title="Install Anaconda"></a>Install Anaconda</h1><p>Damn idiots, you should know how to install anaconda and its environment</p>
 <h2 id="Install-Anaconda-from-shell"><a href="#Install-Anaconda-from-shell" class="headerlink" title="Install Anaconda from shell"></a>Install Anaconda from shell</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash Anaconda3-2019.03-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
