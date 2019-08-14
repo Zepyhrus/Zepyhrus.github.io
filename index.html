@@ -549,7 +549,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-14 17:29:39" itemprop="dateModified" datetime="2019-08-14T17:29:39+08:00">2019-08-14</time>
+                <time title="Modified: 2019-08-14 17:33:00" itemprop="dateModified" datetime="2019-08-14T17:33:00+08:00">2019-08-14</time>
               </span>
             
           
@@ -568,8 +568,8 @@
           
             <p>Installation structions for configuration DL environment</p>
 <ul>
-<li>Ubuntu 18.04 LTS</li>
-<li>Nvidia Tesla P40 24G/Nvidia Quadro P2000 8G</li>
+<li>Ubuntu 18.04 LTS, kernel version 5.0.0 (You may use <code>uname -r</code> to check your kernel version)</li>
+<li>Nvidia Tesla P40 24G/Tesla P4 8G/Nvidia Quadro P2000 8G</li>
 <li>CUDA 10.0</li>
 <li>CUDNN 7.6.1 for CUDA 10.0</li>
 <li>opencv 3.4.5</li>
@@ -580,6 +580,7 @@
 </ul>
 <p>Tips:</p>
 <ul>
+<li>At current stage, an update of Ubuntu kernel, will cause the loss of Nvidia driver. A version of 418 works the best for 4.18~4.24 version of Ubuntu kernel;</li>
 <li>DO NOT use sudo apt autoremove, unless you know what you are doing/removing;</li>
 <li>Read the instructions carefully until you know what you are doing;</li>
 </ul>

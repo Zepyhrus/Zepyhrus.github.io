@@ -55,17 +55,17 @@
   };
 </script>
 
-  <meta name="description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS Nvidia Tesla P40 24G/Nvidia Quadro P2000 8G CUDA 10.0 CUDNN 7.6.1 for CUDA 10.0 opencv 3.4.5 tensorflow-gpu 1.12.0 caffe 1.0,">
+  <meta name="description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS, kernel version 5.0.0 (You may use uname -r to check your kernel version) Nvidia Tesla P40 24G/Tesla P4 8G/Nvidia Quadro P200">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Deep Learning Environment">
 <meta property="og:url" content="http://yoursite.com/2019/07/04/Deep-Learning-Environment/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS Nvidia Tesla P40 24G/Nvidia Quadro P2000 8G CUDA 10.0 CUDNN 7.6.1 for CUDA 10.0 opencv 3.4.5 tensorflow-gpu 1.12.0 caffe 1.0,">
+<meta property="og:description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS, kernel version 5.0.0 (You may use uname -r to check your kernel version) Nvidia Tesla P40 24G/Tesla P4 8G/Nvidia Quadro P200">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-14T09:29:39.641Z">
+<meta property="og:updated_time" content="2019-08-14T09:33:00.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deep Learning Environment">
-<meta name="twitter:description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS Nvidia Tesla P40 24G/Nvidia Quadro P2000 8G CUDA 10.0 CUDNN 7.6.1 for CUDA 10.0 opencv 3.4.5 tensorflow-gpu 1.12.0 caffe 1.0,">
+<meta name="twitter:description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS, kernel version 5.0.0 (You may use uname -r to check your kernel version) Nvidia Tesla P40 24G/Tesla P4 8G/Nvidia Quadro P200">
   <link rel="canonical" href="http://yoursite.com/2019/07/04/Deep-Learning-Environment/">
 
 
@@ -237,7 +237,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-14 17:29:39" itemprop="dateModified" datetime="2019-08-14T17:29:39+08:00">2019-08-14</time>
+                <time title="Modified: 2019-08-14 17:33:00" itemprop="dateModified" datetime="2019-08-14T17:33:00+08:00">2019-08-14</time>
               </span>
             
           
@@ -255,8 +255,8 @@
       
         <p>Installation structions for configuration DL environment</p>
 <ul>
-<li>Ubuntu 18.04 LTS</li>
-<li>Nvidia Tesla P40 24G/Nvidia Quadro P2000 8G</li>
+<li>Ubuntu 18.04 LTS, kernel version 5.0.0 (You may use <code>uname -r</code> to check your kernel version)</li>
+<li>Nvidia Tesla P40 24G/Tesla P4 8G/Nvidia Quadro P2000 8G</li>
 <li>CUDA 10.0</li>
 <li>CUDNN 7.6.1 for CUDA 10.0</li>
 <li>opencv 3.4.5</li>
@@ -267,6 +267,7 @@
 </ul>
 <p>Tips:</p>
 <ul>
+<li>At current stage, an update of Ubuntu kernel, will cause the loss of Nvidia driver. A version of 418 works the best for 4.18~4.24 version of Ubuntu kernel;</li>
 <li>DO NOT use sudo apt autoremove, unless you know what you are doing/removing;</li>
 <li>Read the instructions carefully until you know what you are doing;</li>
 </ul>
