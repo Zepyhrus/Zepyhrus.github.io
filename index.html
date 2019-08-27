@@ -190,6 +190,85 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/27/CPP-Primer-Chapter-4-Expressions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zepyhrus">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+              <a href="/2019/08/27/CPP-Primer-Chapter-4-Expressions/" class="post-title-link" itemprop="url">CPP Primer Chapter 4: Expressions</a>
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-08-27 09:18:11 / Modified: 09:18:57" itemprop="dateCreated datePublished" datetime="2019-08-27T09:18:11+08:00">2019-08-27</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h1 id="Expressions"><a href="#Expressions" class="headerlink" title="Expressions"></a>Expressions</h1>
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/26/CPP-Primer-Chapter-1-Getting-Started/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -317,11 +396,19 @@
                 
               
 
-              <time title="Created: 2019-08-26 11:11:53 / Modified: 21:07:33" itemprop="dateCreated datePublished" datetime="2019-08-26T11:11:53+08:00">2019-08-26</time>
+              <time title="Created: 2019-08-26 11:11:53" itemprop="dateCreated datePublished" datetime="2019-08-26T11:11:53+08:00">2019-08-26</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-27 09:07:41" itemprop="dateModified" datetime="2019-08-27T09:07:41+08:00">2019-08-27</time>
+              </span>
             
           
 
@@ -441,6 +528,12 @@
 <p><strong>Notes</strong>: To use a multidimensional array in a range for, the loop control variable for all but the innermost array must be references.</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *ip[<span class="number">4</span>];     <span class="comment">// array of pointers to int</span></span><br><span class="line"><span class="keyword">int</span> (*ip)[<span class="number">4</span>];   <span class="comment">// pointer to an array of four ints</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// print the value of each element in ia, with each inner array on its own line</span></span><br><span class="line"><span class="comment">// p points to an array of four ints</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> p = ia; p != ia + <span class="number">3</span>; ++p) &#123;</span><br><span class="line">  <span class="comment">// q points to the first element of an array of four ints; that is , q points to an int</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> q = *p; q != *p + <span class="number">4</span>; ++q)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *q &lt;&lt; <span class="string">'\t'</span>;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="Defined-Terms"><a href="#Defined-Terms" class="headerlink" title="Defined Terms"></a>Defined Terms</h2><ul>
+<li>begin/end: included in <code>&lt;iterator&gt;</code>, return the pointers to an array`s begin and end;</li>
+<li>buffer overflow: When we use an index that is out-of-range for a container;</li>
+<li>difference_type: A <code>signed</code> integral type defined by <code>vector</code> and <code>string</code> that can hold the distance between any two iterators;</li>
+<li>ptrdiff_t/size_t: Machine-dependent signed integral type defined in the <code>cstddef</code> header that is large enough to held the difference between 2 pointers into the largest possible array;</li>
+</ul>
 
           
         
@@ -1215,7 +1308,7 @@ you shall make the file manually:</p>
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
