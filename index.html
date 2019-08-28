@@ -222,7 +222,7 @@
                 
               
 
-              <time title="Created: 2019-08-27 09:18:11 / Modified: 09:18:57" itemprop="dateCreated datePublished" datetime="2019-08-27T09:18:11+08:00">2019-08-27</time>
+              <time title="Created: 2019-08-27 09:18:11 / Modified: 20:40:48" itemprop="dateCreated datePublished" datetime="2019-08-27T09:18:11+08:00">2019-08-27</time>
             </span>
           
             
@@ -242,7 +242,38 @@
 
       
           
-            <h1 id="Expressions"><a href="#Expressions" class="headerlink" title="Expressions"></a>Expressions</h1>
+            <h1 id="Expressions"><a href="#Expressions" class="headerlink" title="Expressions"></a>Expressions</h1><h2 id="4-1-Fundamentals"><a href="#4-1-Fundamentals" class="headerlink" title="4.1 Fundamentals"></a>4.1 Fundamentals</h2><p>There ar both <em>unary operators</em> and <em>binary operators</em>.</p>
+<ol>
+<li>Unary operators: address-of (&amp;) and dereference (*), act on one operand;</li>
+<li>Binary operators: equality (==) and multiplication (*), act on two operands;</li>
+<li>Tenrary operator: takes three operands;</li>
+<li>Function call: takes unlimited number of operands;</li>
+</ol>
+<p><strong>Operand Conversions</strong>: The small integral type operands (e.g., <code>bool</code>, <code>char</code>, <code>short</code>, etc) are generally <strong>promoted</strong> to a larger integraltype, typically int.</p>
+<p><strong>Overloaded Operators</strong>:The IO library &gt;&gt; and &lt;&lt; operators we used with <code>strings</code>, <code>vectors</code>, and iterators are all overloaded operators.</p>
+<p><strong>Lvalue and Rvalue</strong>: Iherited from C. Some lvalues, such as <code>const</code> objects, may not be the left-hand operand of an assignment. Moreover, some expression yield objects but return them as rvalues, not lvalues.</p>
+<p>Roughly speaking:</p>
+<ul>
+<li>When we use an object as an rvalue, we use the object`s value (its content);</li>
+<li>When we use an object as an lvalue, we use the object’s identity (its location in memory);</li>
+</ul>
+<p><strong>Important</strong>: We can use an lvalue when an rvalue is required, but we ccannot use an rvalue when an lvalue (i.e.., a location) is required.</p>
+<ul>
+<li>Assignment requiers a lvalue as itts left-hand operand and yields its left-hand operand as an lvalue;</li>
+<li>The address-of operator requiers an lvalue operand and returns a pointer to its operand as an rvalue;</li>
+<li>The built-in dereferenect and subscript operators and the iterator dereference and <code>string</code> and <code>vector</code> subscript operators all yield lvalues;</li>
+<li>The built-in and iterator increment and decrement operators require lvalue operands and the prefix versions also yield lvalues.</li>
+<li>When we apply <code>decltype</code> to an expression, the result is a reference type if the expression yields an lvalue.</li>
+</ul>
+<h3 id="4-1-2-Precedence-and-Associativity"><a href="#4-1-2-Precedence-and-Associativity" class="headerlink" title="4.1.2 Precedence and Associativity"></a>4.1.2 Precedence and Associativity</h3><p>Table 4.12 (p. 166) lists all the operators organized into segmentes separated by double lines.</p>
+<h3 id="4-1-3-Order-of-Evaluation"><a href="#4-1-3-Order-of-Evaluation" class="headerlink" title="4.1.3 Order of Evaluation"></a>4.1.3 Order of Evaluation</h3><p>In most cases, the order of how the operands are evaluated is largely unspecified. There are four operators that do guarantee the order in which operands are evaluated. </p>
+<ul>
+<li>The logical AND (&amp;&amp;)  guarantees thta its left-hand operand is evaluated first. It is also guaranteed that the right -hand operand is evaluated only if the left-hand operand is true.</li>
+<li>The logical OR (||);</li>
+<li>The condition (? :) operator, the tenary operator;</li>
+<li>The comma (,) operator;</li>
+</ul>
+
           
         
       
@@ -593,11 +624,19 @@
                 
               
 
-              <time title="Created: 2019-08-26 10:23:14 / Modified: 10:26:36" itemprop="dateCreated datePublished" datetime="2019-08-26T10:23:14+08:00">2019-08-26</time>
+              <time title="Created: 2019-08-26 10:23:14" itemprop="dateCreated datePublished" datetime="2019-08-26T10:23:14+08:00">2019-08-26</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-27 10:28:25" itemprop="dateModified" datetime="2019-08-27T10:28:25+08:00">2019-08-27</time>
+              </span>
             
           
 
@@ -614,7 +653,13 @@
       
           
             <h1 id="OpenCV-Matrix-Operations"><a href="#OpenCV-Matrix-Operations" class="headerlink" title="OpenCV Matrix Operations"></a>OpenCV Matrix Operations</h1><p>Since OpenCV is the most widely used image processing library, the matrix operation and basic linear algebra is inevidable.</p>
-<h2 id="1-Initialization"><a href="#1-Initialization" class="headerlink" title="1. Initialization"></a>1. Initialization</h2>
+<h2 id="1-Initialization"><a href="#1-Initialization" class="headerlink" title="1. Initialization"></a>1. Initialization</h2><p>Remeber that you have to initialize a Mat from a array.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/core/core.hpp&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addMatrixExample</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">float</span> a[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>, <span class="number">2</span>&#125;,</span><br><span class="line">                   &#123;<span class="number">3</span>, <span class="number">4</span>&#125;&#125;;</span><br><span class="line">  <span class="keyword">float</span> b[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">5</span>, <span class="number">6</span>&#125;,</span><br><span class="line">                   &#123;<span class="number">7</span>, <span class="number">8</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">  Mat A = Mat(<span class="number">2</span>, <span class="number">2</span>, CV_32FC1, a);</span><br><span class="line">  Mat B = Mat(<span class="number">2</span>, <span class="number">2</span>, CV_32FC1, b);</span><br><span class="line">  Mat C;</span><br><span class="line">  C = A + B;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"C ="</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="string">" "</span> &lt;&lt; C &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    addMatrixExample();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Point"><a href="#2-Point" class="headerlink" title="2. Point"></a>2. Point</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> Point_&lt;<span class="keyword">int</span>&gt; Point2i;</span><br><span class="line"><span class="keyword">typedef</span> Point2i Point;</span><br><span class="line"><span class="keyword">typedef</span> Point_&lt;<span class="keyword">float</span>&gt; Point2f;</span><br><span class="line"><span class="keyword">typedef</span> Point_&lt;<span class="keyword">double</span>&gt; Point2d;</span><br><span class="line"><span class="keyword">typedef</span> Point3_&lt;<span class="keyword">int</span>&gt; Point3i;</span><br><span class="line"><span class="keyword">typedef</span> Point3_&lt;<span class="keyword">float</span>&gt; Point3f;</span><br><span class="line"><span class="keyword">typedef</span> Point3_&lt;<span class="keyword">double</span>&gt; Point3d;</span><br></pre></td></tr></table></figure>
+
+<p>From the above we can see that <code>Point</code>, <code>Point2i</code>, <code>Point_&lt;int&gt;</code> are exactly the same.</p>
+
           
         
       
