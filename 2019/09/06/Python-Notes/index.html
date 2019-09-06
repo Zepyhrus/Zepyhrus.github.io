@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="OpenCV Matrix OperationsSince OpenCV is the most widely used image processing library, the matrix operation and basic linear algebra is inevidable. 1. InitializationRemeber that you have to initialize">
+  <meta name="description" content="Python NotesThis is the place to take some regular notes for python. Numpy1numpy.unique(ar, return_index=False, return_inverse=False, return_counts=False, axis=None)  Pandas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Opencv Matrix Operations">
-<meta property="og:url" content="http://yoursite.com/2019/08/26/Opencv-Matrix-Operations/index.html">
+<meta property="og:title" content="Python Notes">
+<meta property="og:url" content="http://yoursite.com/2019/09/06/Python-Notes/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="OpenCV Matrix OperationsSince OpenCV is the most widely used image processing library, the matrix operation and basic linear algebra is inevidable. 1. InitializationRemeber that you have to initialize">
+<meta property="og:description" content="Python NotesThis is the place to take some regular notes for python. Numpy1numpy.unique(ar, return_index=False, return_inverse=False, return_counts=False, axis=None)  Pandas">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-27T02:28:25.616Z">
+<meta property="og:updated_time" content="2019-09-06T05:35:00.363Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Opencv Matrix Operations">
-<meta name="twitter:description" content="OpenCV Matrix OperationsSince OpenCV is the most widely used image processing library, the matrix operation and basic linear algebra is inevidable. 1. InitializationRemeber that you have to initialize">
-  <link rel="canonical" href="http://yoursite.com/2019/08/26/Opencv-Matrix-Operations/">
+<meta name="twitter:title" content="Python Notes">
+<meta name="twitter:description" content="Python NotesThis is the place to take some regular notes for python. Numpy1numpy.unique(ar, return_index=False, return_inverse=False, return_counts=False, axis=None)  Pandas">
+  <link rel="canonical" href="http://yoursite.com/2019/09/06/Python-Notes/">
 
 
 <script id="page-configurations">
@@ -80,7 +80,7 @@
   };
 </script>
 
-  <title>Opencv Matrix Operations | Hexo</title>
+  <title>Python Notes | Hexo</title>
   
 
 
@@ -195,7 +195,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/26/Opencv-Matrix-Operations/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/06/Python-Notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zepyhrus">
@@ -209,7 +209,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">Opencv Matrix Operations
+          <h1 class="post-title" itemprop="name headline">Python Notes
 
             
           </h1>
@@ -226,19 +226,11 @@
                 
               
 
-              <time title="Created: 2019-08-26 10:23:14" itemprop="dateCreated datePublished" datetime="2019-08-26T10:23:14+08:00">2019-08-26</time>
+              <time title="Created: 2019-09-06 13:05:07 / Modified: 13:35:00" itemprop="dateCreated datePublished" datetime="2019-09-06T13:05:07+08:00">2019-09-06</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-27 10:28:25" itemprop="dateModified" datetime="2019-08-27T10:28:25+08:00">2019-08-27</time>
-              </span>
             
           
 
@@ -253,14 +245,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="OpenCV-Matrix-Operations"><a href="#OpenCV-Matrix-Operations" class="headerlink" title="OpenCV Matrix Operations"></a>OpenCV Matrix Operations</h1><p>Since OpenCV is the most widely used image processing library, the matrix operation and basic linear algebra is inevidable.</p>
-<h2 id="1-Initialization"><a href="#1-Initialization" class="headerlink" title="1. Initialization"></a>1. Initialization</h2><p>Remeber that you have to initialize a Mat from a array.</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/core/core.hpp&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addMatrixExample</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">float</span> a[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">1</span>, <span class="number">2</span>&#125;,</span><br><span class="line">                   &#123;<span class="number">3</span>, <span class="number">4</span>&#125;&#125;;</span><br><span class="line">  <span class="keyword">float</span> b[<span class="number">2</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">5</span>, <span class="number">6</span>&#125;,</span><br><span class="line">                   &#123;<span class="number">7</span>, <span class="number">8</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">  Mat A = Mat(<span class="number">2</span>, <span class="number">2</span>, CV_32FC1, a);</span><br><span class="line">  Mat B = Mat(<span class="number">2</span>, <span class="number">2</span>, CV_32FC1, b);</span><br><span class="line">  Mat C;</span><br><span class="line">  C = A + B;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"C ="</span> &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="string">" "</span> &lt;&lt; C &lt;&lt; <span class="built_in">endl</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    addMatrixExample();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h1 id="Python-Notes"><a href="#Python-Notes" class="headerlink" title="Python Notes"></a>Python Notes</h1><p>This is the place to take some regular notes for python.</p>
+<h2 id="Numpy"><a href="#Numpy" class="headerlink" title="Numpy"></a>Numpy</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">numpy.unique(ar, return_index=<span class="literal">False</span>, return_inverse=<span class="literal">False</span>, return_counts=<span class="literal">False</span>, axis=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-Point"><a href="#2-Point" class="headerlink" title="2. Point"></a>2. Point</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> Point_&lt;<span class="keyword">int</span>&gt; Point2i;</span><br><span class="line"><span class="keyword">typedef</span> Point2i Point;</span><br><span class="line"><span class="keyword">typedef</span> Point_&lt;<span class="keyword">float</span>&gt; Point2f;</span><br><span class="line"><span class="keyword">typedef</span> Point_&lt;<span class="keyword">double</span>&gt; Point2d;</span><br><span class="line"><span class="keyword">typedef</span> Point3_&lt;<span class="keyword">int</span>&gt; Point3i;</span><br><span class="line"><span class="keyword">typedef</span> Point3_&lt;<span class="keyword">float</span>&gt; Point3f;</span><br><span class="line"><span class="keyword">typedef</span> Point3_&lt;<span class="keyword">double</span>&gt; Point3d;</span><br></pre></td></tr></table></figure>
-
-<p>From the above we can see that <code>Point</code>, <code>Point2i</code>, <code>Point_&lt;int&gt;</code> are exactly the same.</p>
-
+<h2 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h2>
     </div>
 
     
@@ -276,8 +264,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/08/14/hello-world/" rel="next" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
+                <a href="/2019/08/27/CPP-Primer-Chapter-4-Expressions/" rel="next" title="CPP Primer Chapter 4: Expressions">
+                  <i class="fa fa-chevron-left"></i> CPP Primer Chapter 4: Expressions
                 </a>
               
             </div>
@@ -285,10 +273,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/08/26/CPP-Primer-Chapter-3-String-Vectors-and-Arrays/" rel="prev" title="CPP Primer: Chapter 3 String, Vectors, and Arrays">
-                  CPP Primer: Chapter 3 String, Vectors, and Arrays <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -363,7 +347,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenCV-Matrix-Operations"><span class="nav-number">1.</span> <span class="nav-text">OpenCV Matrix Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Initialization"><span class="nav-number">1.1.</span> <span class="nav-text">1. Initialization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Point"><span class="nav-number">1.2.</span> <span class="nav-text">2. Point</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-Notes"><span class="nav-number">1.</span> <span class="nav-text">Python Notes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Numpy"><span class="nav-number">1.1.</span> <span class="nav-text">Numpy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pandas"><span class="nav-number">1.2.</span> <span class="nav-text">Pandas</span></a></li></ol></li></ol></div>
             
 
           </div>
