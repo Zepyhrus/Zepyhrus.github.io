@@ -315,7 +315,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-08-29 20:15:57" itemprop="dateModified" datetime="2019-08-29T20:15:57+08:00">2019-08-29</time>
+                <time title="Modified: 2019-09-06 14:51:34" itemprop="dateModified" datetime="2019-09-06T14:51:34+08:00">2019-09-06</time>
               </span>
             
           
@@ -378,6 +378,19 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+=    -=    *=    /=    %=;    <span class="comment">// arithmetci operators</span></span><br><span class="line">&lt;&lt;=   &gt;&gt;=   &amp;=    ^=    |=;    <span class="comment">// bitwise operators</span></span><br></pre></td></tr></table></figure>
 
 <p>Each compound operator is essentially equivalent to <code>a = a op b</code>.</p>
+<h2 id="4-5-Increment-and-Decrement-Operators"><a href="#4-5-Increment-and-Decrement-Operators" class="headerlink" title="4.5 Increment and Decrement Operators"></a>4.5 Increment and Decrement Operators</h2><p>There are two forms of these operators: prefix and postfix. </p>
+<ul>
+<li>prefix: increments its operand and yields the <em>changed</em> object as its result;</li>
+<li>postfix: yield a copy of the original, <em>unchanged</em> object as its result;</li>
+</ul>
+<p><strong>Advice</strong>: Use postfix operators only when necessary.</p>
+<p><strong>Combinig Dereference and Increment in a Single Expression</strong>: The postfix versions of ++ and – are used when we want to use the current value of a variable and increment it in a single compound expression.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> pbeg = v.begin();</span><br><span class="line"><span class="comment">// print elements up to the first negative value</span></span><br><span class="line"><span class="keyword">while</span> (pbeg != v.end() &amp;&amp; *pbeg &gt;= <span class="number">0</span>)</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; *pbeg++ &lt;&lt; <span class="built_in">endl</span>;  <span class="comment">// print the current value and advance pbeg</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Remember that operands can be evaluated in any order</strong>: Most operators give no guarantee as to the order in which operands will be evaluated.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// the behavior of the following loop is undefined!</span></span><br><span class="line"><span class="keyword">while</span> (beg != s.end() &amp;&amp; !<span class="built_in">isspace</span>(*beg))</span><br><span class="line">  \*beg = touper(\*beg++);</span><br><span class="line"></span><br><span class="line"><span class="comment">// which could be evaluated as:</span></span><br><span class="line">*beg = <span class="built_in">toupper</span>(\*beg);</span><br><span class="line">*(beg + <span class="number">1</span>) = <span class="built_in">toupper</span>(\*beg);</span><br></pre></td></tr></table></figure>
+
+<p>Or it might evaluate it in yet some other way.</p>
 
           
         
