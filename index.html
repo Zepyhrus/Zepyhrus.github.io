@@ -1199,7 +1199,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-11 11:14:47" itemprop="dateModified" datetime="2019-09-11T11:14:47+08:00">2019-09-11</time>
+                <time title="Modified: 2019-09-11 11:16:24" itemprop="dateModified" datetime="2019-09-11T11:16:24+08:00">2019-09-11</time>
               </span>
             
           
@@ -1408,7 +1408,7 @@
 <h2 id="Get-PyTorch-Source"><a href="#Get-PyTorch-Source" class="headerlink" title="Get PyTorch Source"></a>Get PyTorch Source</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --recursive https://github.com/pytorch/pytorch</span><br></pre></td></tr></table></figure>
 
 <p>compile libtorch, Note that the core of libtorch is independent from python</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd pytorch;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd pytorch</span><br></pre></td></tr></table></figure>
 
 <p>Please use GCC 6 or higher on Ubuntu 17.04 and higher.  For more information, see: <a href="https://github.com/caffe2/caffe2/issues/1633" target="_blank" rel="noopener">here</a>.<br>You might need to export some required environment variables here. Normally setup.py sets good default env variables, but you’ll have to do that manually. The path: “$(dirname $(which conda))/../“ looks wierd but actually that`s what it is:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export NO_MKLDNN=1</span><br><span class="line">export NO_SYSTEM_NCCL=1</span><br><span class="line">export CUDNN_LIB_DIR=&quot;/usr/local/cuda-10.0/lib64&quot;</span><br><span class="line">export CUDNN_INCLUDE_DIR=&quot;/usr/local/cuda-10.0/include&quot;</span><br><span class="line">export CMAKE_PREFIX_PATH=&quot;$(dirname $(which conda))/../&quot;</span><br></pre></td></tr></table></figure>
