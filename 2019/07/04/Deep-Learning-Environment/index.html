@@ -62,7 +62,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS, kernel version 4.18 (You may use uname -r to check your kernel version, currently, kernel version 5.0.0 is suffering the los">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-11T07:51:49.007Z">
+<meta property="og:updated_time" content="2019-09-11T07:57:58.720Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deep Learning Environment">
 <meta name="twitter:description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS, kernel version 4.18 (You may use uname -r to check your kernel version, currently, kernel version 5.0.0 is suffering the los">
@@ -237,7 +237,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-11 15:51:49" itemprop="dateModified" datetime="2019-09-11T15:51:49+08:00">2019-09-11</time>
+                <time title="Modified: 2019-09-11 15:57:58" itemprop="dateModified" datetime="2019-09-11T15:57:58+08:00">2019-09-11</time>
               </span>
             
           
@@ -267,10 +267,11 @@
 </ul>
 <p>Tips:</p>
 <ul>
+<li>The installation may differ from many subtle differences, like: opencv version/cuda version, and of course, different modules included in your opencv. Even the author, me, install it very differently from time to time. The most import thing is: you are reseponsible for your environment, so if you had met problems during your installation, you should be able to solve them yourself and this blog is only providing a guide for the environment configuration instead of guaranting a successufully installation;</li>
 <li>At current stage, an update of Ubuntu kernel, will cause the loss of Nvidia driver. A version of 418 works the best for 4.18~4.24 version of Ubuntu kernel;</li>
 <li>DO NOT use sudo apt autoremove, unless you know what you are doing/removing;</li>
 <li>Read the instructions carefully until you know what you are doing;</li>
-<li><code>make -j</code> may cause OOM problem, do not use it unless you know how many core of your hardware has;</li>
+<li><code>make -j</code> may cause OOM problem, do not use it unless you know your hardware’s capability;</li>
 </ul>
 <p>The full installation (until the successful installation of pytorch) will takes around 3 ~ 4 hours, depends on how familiar you are with Linux system…: Good luck, now let’s launch!</p>
 <h1 id="Install-system-dependency"><a href="#Install-system-dependency" class="headerlink" title="Install system dependency"></a>Install system dependency</h1><h2 id="Add-Aliyun-source"><a href="#Add-Aliyun-source" class="headerlink" title="Add Aliyun source"></a>Add Aliyun source</h2><p>If you are not in China, you may skip this</p>
