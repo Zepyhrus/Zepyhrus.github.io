@@ -509,7 +509,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-26 11:29:38" itemprop="dateModified" datetime="2019-09-26T11:29:38+08:00">2019-09-26</time>
+                <time title="Modified: 2019-10-21 20:59:51" itemprop="dateModified" datetime="2019-10-21T20:59:51+08:00">2019-10-21</time>
               </span>
             
           
@@ -607,7 +607,17 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constexpr</span> <span class="keyword">size_t</span> sz = <span class="keyword">sizeof</span>(ia)/<span class="keyword">sizeof</span>(*ia);</span><br><span class="line"><span class="keyword">int</span> arr2[sz];</span><br></pre></td></tr></table></figure>
 
 <h2 id="4-10-Comma-Operator"><a href="#4-10-Comma-Operator" class="headerlink" title="4.10 Comma Operator"></a>4.10 Comma Operator</h2><p>The comma operator takes two operands, which it evaluates frmo left to rigtht.</p>
-
+<h2 id="4-11-Type-Conversions"><a href="#4-11-Type-Conversions" class="headerlink" title="4.11 Type Conversions"></a>4.11 Type Conversions</h2><p><strong>Implicit conversions</strong>: Some conversions are carried out automatically without programmer intervention–and sometimes without programmer knowledge. </p>
+<p>Conwerting a <code>double</code> to an <code>int</code> truncates the <code>double</code>‘s value, discarding the decimal portin.</p>
+<p><strong>When Implicit Conversions Occur</strong></p>
+<ul>
+<li>In arithmetic and relational expressions with operands of mixed types, the types are converted to a common type;</li>
+<li>Conversions also happen during function calls;</li>
+</ul>
+<h3 id="4-11-1-The-Arithmetic-Conversions"><a href="#4-11-1-The-Arithmetic-Conversions" class="headerlink" title="4.11.1 The Arithmetic Conversions"></a>4.11.1 The Arithmetic Conversions</h3><p>Nothing much, never mind.</p>
+<h3 id="4-11-2-Other-Implicit-Conversions"><a href="#4-11-2-Other-Implicit-Conversions" class="headerlink" title="4.11.2 Other Implicit Conversions"></a>4.11.2 Other Implicit Conversions</h3><p><strong>Array to Pointer Conversions</strong>: In most expressions, when we use an array, the array is automatically converted to a pointer.</p>
+<p><strong>Pointer Conversions</strong>: There are several other pointer conversions.</p>
+<h3 id="4-11-3-Explicit-Conversions"><a href="#4-11-3-Explicit-Conversions" class="headerlink" title="4.11.3 Explicit Conversions"></a>4.11.3 Explicit Conversions</h3>
           
         
       
