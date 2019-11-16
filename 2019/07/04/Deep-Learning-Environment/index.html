@@ -62,7 +62,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS, kernel version 4.18 (You may use uname -r to check your kernel version, currently, kernel version 5.0.0 is suffering the los">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-11T07:57:58.720Z">
+<meta property="og:updated_time" content="2019-10-23T08:41:28.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deep Learning Environment">
 <meta name="twitter:description" content="Installation structions for configuration DL environment  Ubuntu 18.04 LTS, kernel version 4.18 (You may use uname -r to check your kernel version, currently, kernel version 5.0.0 is suffering the los">
@@ -237,7 +237,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-11 15:57:58" itemprop="dateModified" datetime="2019-09-11T15:57:58+08:00">2019-09-11</time>
+                <time title="Modified: 2019-10-23 16:41:28" itemprop="dateModified" datetime="2019-10-23T16:41:28+08:00">2019-10-23</time>
               </span>
             
           
@@ -358,6 +358,9 @@
 
 <h2 id="Make"><a href="#Make" class="headerlink" title="Make"></a>Make</h2><p><strong>Note</strong>: you should change the cmake paths according to your own system.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">cd opencv-3.4.5</span><br><span class="line">mkdir build &amp;&amp; cd build</span><br><span class="line">cmake \</span><br><span class="line">	-D CMAKE_BUILD_TYPE=Release \</span><br><span class="line">	-D CMAKE_INSTALL_PREFIX=/usr/local \</span><br><span class="line">	-D WITH_CUDA=ON \</span><br><span class="line">	-D ENABLE_PRECOMPILED_HEADERS=OFF\</span><br><span class="line">	-D ENABLE_FAST_MATH=1 \</span><br><span class="line">	-D CUDA_FAST_MATH=1 \</span><br><span class="line">	-D WITH_CUBLAS=1 \</span><br><span class="line">	-D INSTALL_PYTHON_EXAMPLES=ON \</span><br><span class="line">	-D INSTALL_C_EXAMPLES=ON \</span><br><span class="line">	-D OPENCV_ENABLE_NONFREE=ON \</span><br><span class="line">	-D OPENCV_EXTRA_MODULES_PATH=/home/ubuntu/Installation/opencv_contrib-3.4.5/modules/ \</span><br><span class="line">	-D PYTHON_EXECUTABLE=/home/ubuntu/anaconda3/envs/torch-gpu/bin/python \</span><br><span class="line">	-D BUILD_TIFF=ON ..</span><br><span class="line"></span><br><span class="line">make -j4</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+
+<p>Opencv with CPU only:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cmake \</span><br><span class="line">	-D CMAKE_BUILD_TYPE=Release \</span><br><span class="line">	-D CMAKE_INSTALL_PREFIX=/usr/local \</span><br><span class="line">	-D ENABLE_PRECOMPILED_HEADERS=OFF\</span><br><span class="line">	-D ENABLE_FAST_MATH=1 \</span><br><span class="line">	-D INSTALL_PYTHON_EXAMPLES=ON \</span><br><span class="line">	-D INSTALL_C_EXAMPLES=ON \</span><br><span class="line">	-D OPENCV_ENABLE_NONFREE=ON \</span><br><span class="line">	-D OPENCV_EXTRA_MODULES_PATH=/home/slsdev/Installation/opencv_contrib-3.4.5/modules/ \</span><br><span class="line">	-D PYTHON_EXECUTABLE=/home/slsdev/anaconda3/envs/torch-cpu/bin/python \</span><br><span class="line">	-D BUILD_TIFF=ON ..</span><br></pre></td></tr></table></figure>
 
 <p><strong>Note</strong>: If you are in mainland China, you may have trouble building the opencv project 3rd party lib: ippicv. You can download it manually from <a href="https://github.com/opencv/opencv_3rdparty/tree/ippicv/internal_3.4_20190204/ippicv" target="_blank" rel="noopener">here</a>. Then cd to <code>${OPENCV_ROOT}/third_party/ippicv/</code> and modify the ippicv.cmake file from:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;https://raw.githubusercontent.com/opencv/opencv_3rdparty/$&#123;IPPICV_COMMIT&#125;/ippicv/&quot;</span><br></pre></td></tr></table></figure>
