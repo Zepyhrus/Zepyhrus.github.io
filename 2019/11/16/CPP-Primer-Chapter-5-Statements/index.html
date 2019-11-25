@@ -62,7 +62,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Chapter 5 语句和大多数语言一样，C++提供了条件执行语句、重复执行相同代码的循环语句和用于中断当前控制流的跳转语句。 5.1 简单语句空语句 BEST PRACTICE：使用空语句时最好是加上注释，从而令独这段代码的人知道该语句是有意省略的。 WARNING：多余的空语句并非总是无害的。 复合语句（块） 复合语句块是指被{}括起来的语句和声明序列，也被成为block。 5.2 语句作用域">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-16T04:00:35.638Z">
+<meta property="og:updated_time" content="2019-11-16T11:05:05.458Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CPP Primer Chapter 5 Statements">
 <meta name="twitter:description" content="Chapter 5 语句和大多数语言一样，C++提供了条件执行语句、重复执行相同代码的循环语句和用于中断当前控制流的跳转语句。 5.1 简单语句空语句 BEST PRACTICE：使用空语句时最好是加上注释，从而令独这段代码的人知道该语句是有意省略的。 WARNING：多余的空语句并非总是无害的。 复合语句（块） 复合语句块是指被{}括起来的语句和声明序列，也被成为block。 5.2 语句作用域">
@@ -226,7 +226,7 @@
                 
               
 
-              <time title="Created: 2019-11-16 11:51:12 / Modified: 12:00:35" itemprop="dateCreated datePublished" datetime="2019-11-16T11:51:12+08:00">2019-11-16</time>
+              <time title="Created: 2019-11-16 11:51:12 / Modified: 19:05:05" itemprop="dateCreated datePublished" datetime="2019-11-16T11:51:12+08:00">2019-11-16</time>
             </span>
           
             
@@ -251,7 +251,16 @@
 <p><strong>WARNING</strong>：多余的空语句并非总是无害的。</p>
 <p><strong>复合语句（块）</strong></p>
 <p>复合语句块是指被<code>{}</code>括起来的语句和声明序列，也被成为block。</p>
-<h2 id="5-2-语句作用域"><a href="#5-2-语句作用域" class="headerlink" title="5.2 语句作用域"></a>5.2 语句作用域</h2><h2 id="5-3-条件语句"><a href="#5-3-条件语句" class="headerlink" title="5.3 条件语句"></a>5.3 条件语句</h2><h2 id="5-4-迭代语句"><a href="#5-4-迭代语句" class="headerlink" title="5.4 迭代语句"></a>5.4 迭代语句</h2><h2 id="5-5-跳转语句"><a href="#5-5-跳转语句" class="headerlink" title="5.5 跳转语句"></a>5.5 跳转语句</h2><h2 id="5-6-try-语句块和异常处理"><a href="#5-6-try-语句块和异常处理" class="headerlink" title="5.6 try 语句块和异常处理"></a>5.6 <code>try</code> 语句块和异常处理</h2>
+<h2 id="5-2-语句作用域"><a href="#5-2-语句作用域" class="headerlink" title="5.2 语句作用域"></a>5.2 语句作用域</h2><h2 id="5-3-条件语句"><a href="#5-3-条件语句" class="headerlink" title="5.3 条件语句"></a>5.3 条件语句</h2><p><strong>悬挂else</strong>：C++规定<code>else</code>与离它最近的尚未匹配的<code>if</code>匹配。</p>
+<h3 id="5-3-2-switch-语句"><a href="#5-3-2-switch-语句" class="headerlink" title="5.3.2  switch 语句"></a>5.3.2  <code>switch</code> 语句</h3><p><strong>switch 内部的控制流</strong>：如果某个<code>case</code>匹配成功，将错哦你该标签开始往后顺序执行所有<code>case</code>分支，除非程序显式地中断了这一过程。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> vowelCnt = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">switch</span> (ch)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">'a'</span>:</span><br><span class="line">  <span class="keyword">case</span> <span class="string">'e'</span>:</span><br><span class="line">  <span class="keyword">case</span> <span class="string">'i'</span>:</span><br><span class="line">  <span class="keyword">case</span> <span class="string">'o'</span>:</span><br><span class="line">  <span class="keyword">case</span> <span class="string">'u'</span>:</span><br><span class="line">    ++vowelCnt;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>case</code> 标签之后不一定非得换行。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (ch) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">'a'</span>: <span class="keyword">case</span> <span class="string">'e'</span>: <span class="keyword">case</span> <span class="string">'i'</span>: <span class="keyword">case</span> <span class="string">'o'</span>: <span class="keyword">case</span> <span class="string">'u'</span>:</span><br><span class="line">    ++vowelCnt;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>WARNING</strong>：常见的错觉是程序只执行匹配成功的那个<code>case</code>分支语句。因此在每个标签后写上<code>break</code>，是最好的应用。这样新增加新的分支也不用在前面加上<code>break</code>了。</p>
+<p><strong>default 标签</strong>：当没有任何一个<code>case</code>标签能匹配上<code>switch</code>表达式的值时，程序将执行紧跟在<code>default</code>后面的语句。每一个<code>switch</code>语句。</p>
+<h2 id="5-4-迭代语句"><a href="#5-4-迭代语句" class="headerlink" title="5.4 迭代语句"></a>5.4 迭代语句</h2><h2 id="5-5-跳转语句"><a href="#5-5-跳转语句" class="headerlink" title="5.5 跳转语句"></a>5.5 跳转语句</h2><h2 id="5-6-try-语句块和异常处理"><a href="#5-6-try-语句块和异常处理" class="headerlink" title="5.6 try 语句块和异常处理"></a>5.6 <code>try</code> 语句块和异常处理</h2>
     </div>
 
     
@@ -276,6 +285,10 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+              
+                <a href="/2019/11/25/Detectron2-Code-Notes/" rel="prev" title="Detectron2: Code Notes">
+                  Detectron2: Code Notes <i class="fa fa-chevron-right"></i>
+                </a>
               
             </div>
           </div>
@@ -329,7 +342,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -350,7 +363,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-5-语句"><span class="nav-number">1.</span> <span class="nav-text">Chapter 5 语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-简单语句"><span class="nav-number">1.1.</span> <span class="nav-text">5.1 简单语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-语句作用域"><span class="nav-number">1.2.</span> <span class="nav-text">5.2 语句作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-条件语句"><span class="nav-number">1.3.</span> <span class="nav-text">5.3 条件语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-迭代语句"><span class="nav-number">1.4.</span> <span class="nav-text">5.4 迭代语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-跳转语句"><span class="nav-number">1.5.</span> <span class="nav-text">5.5 跳转语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-6-try-语句块和异常处理"><span class="nav-number">1.6.</span> <span class="nav-text">5.6 try 语句块和异常处理</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-5-语句"><span class="nav-number">1.</span> <span class="nav-text">Chapter 5 语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-简单语句"><span class="nav-number">1.1.</span> <span class="nav-text">5.1 简单语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-语句作用域"><span class="nav-number">1.2.</span> <span class="nav-text">5.2 语句作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-条件语句"><span class="nav-number">1.3.</span> <span class="nav-text">5.3 条件语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-2-switch-语句"><span class="nav-number">1.3.1.</span> <span class="nav-text">5.3.2  switch 语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-迭代语句"><span class="nav-number">1.4.</span> <span class="nav-text">5.4 迭代语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-跳转语句"><span class="nav-number">1.5.</span> <span class="nav-text">5.5 跳转语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-6-try-语句块和异常处理"><span class="nav-number">1.6.</span> <span class="nav-text">5.6 try 语句块和异常处理</span></a></li></ol></li></ol></div>
             
 
           </div>

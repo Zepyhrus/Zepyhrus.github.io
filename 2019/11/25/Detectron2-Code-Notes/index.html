@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="generator" content="Hexo 3.9.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.3.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    save_scroll: false,
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    }
+  };
+</script>
+
+  <meta name="description" content="Detectron 2 源码阅读笔记Most part of the begining of this notes is inherited from https://www.cnblogs.com/marsggbo/p/11677086.html.  1. 代码结构概览 核心部分  configs: 储存各种网络的yaml配置文件； datasets: 存放数据集的地方； deteectron2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Detectron2: Code Notes">
+<meta property="og:url" content="http://yoursite.com/2019/11/25/Detectron2-Code-Notes/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Detectron 2 源码阅读笔记Most part of the begining of this notes is inherited from https://www.cnblogs.com/marsggbo/p/11677086.html.  1. 代码结构概览 核心部分  configs: 储存各种网络的yaml配置文件； datasets: 存放数据集的地方； deteectron2">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/home/ubuntu/Workspace/detectron2/materials/ggbjq2bbwo.png">
+<meta property="og:updated_time" content="2019-11-25T06:43:16.047Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Detectron2: Code Notes">
+<meta name="twitter:description" content="Detectron 2 源码阅读笔记Most part of the begining of this notes is inherited from https://www.cnblogs.com/marsggbo/p/11677086.html.  1. 代码结构概览 核心部分  configs: 储存各种网络的yaml配置文件； datasets: 存放数据集的地方； deteectron2">
+<meta name="twitter:image" content="http://yoursite.com/home/ubuntu/Workspace/detectron2/materials/ggbjq2bbwo.png">
+  <link rel="canonical" href="http://yoursite.com/2019/11/25/Detectron2-Code-Notes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Detectron2: Code Notes | Hexo</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <div class="container sidebar-position-left">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+  </ul>
+
+    
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content page-post-detail">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/25/Detectron2-Code-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zepyhrus">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">Detectron2: Code Notes
+
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-11-25 10:55:31 / Modified: 14:43:16" itemprop="dateCreated datePublished" datetime="2019-11-25T10:55:31+08:00">2019-11-25</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Detectron-2-源码阅读笔记"><a href="#Detectron-2-源码阅读笔记" class="headerlink" title="Detectron 2 源码阅读笔记"></a>Detectron 2 源码阅读笔记</h1><p>Most part of the begining of this notes is inherited from <a href="https://www.cnblogs.com/marsggbo/p/11677086.html" target="_blank" rel="noopener">https://www.cnblogs.com/marsggbo/p/11677086.html</a>. </p>
+<h2 id="1-代码结构概览"><a href="#1-代码结构概览" class="headerlink" title="1. 代码结构概览"></a>1. 代码结构概览</h2><ol>
+<li><p>核心部分</p>
+<ul>
+<li>configs: 储存各种网络的yaml配置文件；</li>
+<li>datasets: 存放数据集的地方；</li>
+<li>deteectron2：运行代码的核心组建；</li>
+<li>tools：提供了运行代码的入口以及一切可视化的代码问价。</li>
+</ul>
+</li>
+<li><p>Tutorial部分</p>
+<ul>
+<li>demo：demo；</li>
+<li>docs：docs；</li>
+<li>tests：tests；</li>
+<li>projects：提供了真实的项目代码示例；</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-代码逻辑分析"><a href="#2-代码逻辑分析" class="headerlink" title="2. 代码逻辑分析"></a>2. 代码逻辑分析</h2><h3 id="2-1-超参数配置"><a href="#2-1-超参数配置" class="headerlink" title="2.1 超参数配置"></a>2.1 超参数配置</h3><p>Detectron2中的参数配置使用了yacs这个库，这个库能够很好地重用和拼接超参数文件配置。我们先看一下<code>detrctron2/config/</code>的文件结构：</p>
+<ul>
+<li>compat.py: 应该是对之前的Detectron库的兼容吧，可忽略。</li>
+<li>config.py: 定义了一个<code>CfgNode</code>类，这个类继承自<code>fvcore</code>库(fb写的一个共公共库，提供一些共享的函数，方便各种不同项目使用)中定义的<code>CfgNode</code>,总之就是不断继承。。。继承关系是这样的：<code>detrctron2.config.CfgNode-&gt;fcvore.common.config.CfgNode-&gt;yacs.config.CfgNode-&gt;dict</code>。另外该文件还提供了<code>get_cfg()</code>方法，该方法会返回一个含有默认配置的<code>CfgNode</code>,而这些默认的配置值在下面的<code>default.py</code>中定义了，之所以这样做是因为要配置的默认值太多了，所以为了文档清晰才写到了一个新的文件中去，不过，yacs库的作者也建议这样做。</li>
+<li>default.py: 如上面所说，该文件定义了各种参数的默认值。</li>
+</ul>
+<p>了解配置函数的方法后我们再回到<code>tools/train_net.py</code>，我们一行一行的来理解。</p>
+<ul>
+<li><code>tools/train_net.py</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> detectron2.config <span class="keyword">import</span> get_cfg</span><br><span class="line"><span class="keyword">from</span> detectron2.engine <span class="keyword">import</span> DefaultTrainer, default_argument_parser, default_setup, hooks, launch</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">setup</span><span class="params">(args)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Create configs and perform basic setups.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    cfg = get_cfg() </span><br><span class="line">    cfg.merge_from_file(args.config_file) </span><br><span class="line">    cfg.merge_from_list(args.opts)</span><br><span class="line">    cfg.freeze()</span><br><span class="line">    default_setup(cfg, args)</span><br><span class="line">    <span class="keyword">return</span> cfg</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>cfg = get_cfg()</code>： 获取已经配置好默认参数的cfg</li>
+<li><code>cfg.merge_from_file(args.config_file)</code>：<code>config_file</code>是指定的yaml配置文件，通过<code>merge_from_file</code>这个函数会将yaml文件中指定的超参数对默认值进行覆盖。</li>
+<li><code>cfg.merge_from_list(args.opts)</code>：<code>merge_from_list</code>作用同上面的类似，只不过是通过命令行的方式覆盖。</li>
+<li><code>cfg.freeze()</code>: <code>freeze</code>函数的作用是将超参数值冻结，避免被程序不小心修改。</li>
+<li><code>default_setup(cfg, args)</code>：<code>default_setup</code>是<code>detectron2/engine/default.py</code>中提供的一个默认配置函数，具体是怎么配置的这里不详细说明了。不过需要知道的值这个文件中还提供了很多其他的配置函数，例如还提供了两个类：<code>DefaultPredictor</code>和<code>DefaultTrainer</code>。</li>
+</ul>
+<h3 id="2-2-Trainer"><a href="#2-2-Trainer" class="headerlink" title="2.2 Trainer"></a>2.2 Trainer</h3><p>既然上面提到了<code>DefaultTrainer</code>，那么我们就从这个类入手了解一下<code>detectron2.engine</code>,其代码结构如下：</p>
+<ul>
+<li><code>train_loop.py</code>：这个函数主要作用是提供了三个重要的类：<ul>
+<li><code>HookBase</code>: 这是一个Hook的基类，用于指定在训练前后或者每一个step前后需要做什么事情，所以根据特定的需求需要对如下四种方法做不同的定义：<code>before_train</code>, <code>after_train</code>, <code>before_step</code>, <code>after_step</code>。以<code>before_step</code>。</li>
+<li><code>TrainerBase</code>: 该类中定义的函数可以归纳成三种，并初始化<code>_hooks</code>为<code>[]</code>：<ul>
+<li><code>register_hooks</code>:这个很好理解，就是将用户定义的一些<code>hooks</code>进行注册，<strong>说大白话就是把若干个<code>Hook</code>放在一个<code>list</code>里面去</strong>。之后只需要遍历这个<code>list</code>依次执行就可以了。<ul>
+<li><code>register_hooks(hooks)</code>会将输入的<code>hooks</code>中的<code>trainer</code>设置为当前的类实例的弱引用，并将其添加到当前类实例的<code>self._hooks</code>中去；</li>
+</ul>
+</li>
+<li>第二类其实就是上面提到的遍历<code>hook list</code>并执行<code>hook</code>，不过这个遍历有四种，分别是<code>before_train</code>,<code>after_train</code>,<code>before_step</code>,<code>after_step</code>。还有一个就是<code>run_step</code>,这个函数其实就是平常我们在编写训练过程的代码，例如读数据，训练模型，获取损失值，求导数，反向梯度更新等,只不过在这个类里面没有定义。</li>
+<li>第三类就是<code>train</code>函数，它有两个参数，分别是开始的迭代数和最大的迭代数。之后就是重复依次执行第二类中的函数指定迭代次数。</li>
+</ul>
+</li>
+<li><code>SimpleTrainer</code>:其实就是继承自<code>TrainerBase</code>,然后定义了<code>run_step</code>等方法。我们后面也可以继承这个类做进一步的自定义。<ul>
+<li>初始化基类，并赋予其<code>model</code>、<code>data_loader</code>、<code>_data_loader_iter</code>、<code>optimizer</code>；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>defaults.py</code>: 上面已介绍，提供了两个类：<code>DefaultPredictor</code>和<code>DefaultTrainer</code>，这个<code>DefaultTrainer</code>就继承自<code>SimpleTrainer</code>,所以存在如下继承关系：<code>detectron2.engine.default.DefaultTrainer-&gt;detectron2.engine.train_loop.SimpleTrainer-&gt;detectron2.engine.train_loop.TrainerBase</code></li>
+<li><code>hooks.py</code>:定义了很多继承自<code>train_loop.HookBase的Hook</code>。<ul>
+<li><code>CallBackHook</code>: Create a hook using callback functions provided by the user.</li>
+<li><code>IterationTimer</code>：Track the time spent for each iteration (each run_step call in the trainer). Print a summary in the end of training.；</li>
+<li><code>PeriodicWriter</code>：Write events to EventStorage periodically.</li>
+<li><code>PeriodicCheckpointer</code>：Same as :class:<code>detectron2.checkpoint.PeriodicCheckpointer</code>, but as a hook.</li>
+<li><code>LRScheduler</code>：A hook which executes a torch builtin LR scheduler and summarizes the LR. It is executed after every iteration.</li>
+<li><code>AutogradProfiler</code>：A hook which runs <code>torch.autograd.profiler.profile</code>.</li>
+<li><code>EvalHook</code>: Run an evaluation function periodically, and at the end of training.</li>
+<li><code>PreciseBN</code>: The standard implementation of BatchNorm uses EMA in inference, which is sometimes suboptimal. This class computes the true average of statistics rather than the moving average, and put true averages to every BN layer in the given model.</li>
+</ul>
+</li>
+<li><code>launch.py</code>: 前面提到过，可以理解成代码启动器，可以根据命令决定是否采用分布式训练（或者单机多卡）或者单机单卡训练。</li>
+</ul>
+<p>整个训练过程按照如下流程进行：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">self.before_train()</span><br><span class="line"><span class="keyword">for</span> self.iter <span class="keyword">in</span> range(start_iter, max_iter):</span><br><span class="line">  self.before_step()</span><br><span class="line">  self.run_step()</span><br><span class="line">  self.after_step()</span><br><span class="line"><span class="keyword">finally</span>:</span><br><span class="line">  self.after_train()</span><br></pre></td></tr></table></figure>
+
+<p>小结：<br><img src="/home/ubuntu/Workspace/detectron2/materials/ggbjq2bbwo.png" alt></p>
+
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/11/16/CPP-Primer-Chapter-5-Statements/" rel="next" title="CPP Primer Chapter 5 Statements">
+                  <i class="fa fa-chevron-left"></i> CPP Primer Chapter 5 Statements
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zepyhrus</p>
+  <div class="site-description motion-element" itemprop="description"></div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+        </div>
+      </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Detectron-2-源码阅读笔记"><span class="nav-number">1.</span> <span class="nav-text">Detectron 2 源码阅读笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-代码结构概览"><span class="nav-number">1.1.</span> <span class="nav-text">1. 代码结构概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-代码逻辑分析"><span class="nav-number">1.2.</span> <span class="nav-text">2. 代码逻辑分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-超参数配置"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 超参数配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Trainer"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Trainer</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zepyhrus</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.3.0</div>
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+      </div>
+
+    
+
+  </div>
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+<script src="/js/utils.js?v=7.3.0"></script>
+  <script src="/js/motion.js?v=7.3.0"></script>
+
+
+  <script src="/js/schemes/muse.js?v=7.3.0"></script>
+
+
+
+<script src="/js/next-boot.js?v=7.3.0"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+  
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
+</body>
+</html>
