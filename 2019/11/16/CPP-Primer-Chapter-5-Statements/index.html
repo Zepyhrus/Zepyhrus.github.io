@@ -62,7 +62,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Chapter 5 语句和大多数语言一样，C++提供了条件执行语句、重复执行相同代码的循环语句和用于中断当前控制流的跳转语句。 5.1 简单语句空语句 BEST PRACTICE：使用空语句时最好是加上注释，从而令独这段代码的人知道该语句是有意省略的。 WARNING：多余的空语句并非总是无害的。 复合语句（块） 复合语句块是指被{}括起来的语句和声明序列，也被成为block。 5.2 语句作用域">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-16T11:05:05.458Z">
+<meta property="og:updated_time" content="2019-12-03T12:25:29.631Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CPP Primer Chapter 5 Statements">
 <meta name="twitter:description" content="Chapter 5 语句和大多数语言一样，C++提供了条件执行语句、重复执行相同代码的循环语句和用于中断当前控制流的跳转语句。 5.1 简单语句空语句 BEST PRACTICE：使用空语句时最好是加上注释，从而令独这段代码的人知道该语句是有意省略的。 WARNING：多余的空语句并非总是无害的。 复合语句（块） 复合语句块是指被{}括起来的语句和声明序列，也被成为block。 5.2 语句作用域">
@@ -226,11 +226,19 @@
                 
               
 
-              <time title="Created: 2019-11-16 11:51:12 / Modified: 19:05:05" itemprop="dateCreated datePublished" datetime="2019-11-16T11:51:12+08:00">2019-11-16</time>
+              <time title="Created: 2019-11-16 11:51:12" itemprop="dateCreated datePublished" datetime="2019-11-16T11:51:12+08:00">2019-11-16</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-12-03 20:25:29" itemprop="dateModified" datetime="2019-12-03T20:25:29+08:00">2019-12-03</time>
+              </span>
             
           
 
@@ -260,7 +268,9 @@
 
 <p><strong>WARNING</strong>：常见的错觉是程序只执行匹配成功的那个<code>case</code>分支语句。因此在每个标签后写上<code>break</code>，是最好的应用。这样新增加新的分支也不用在前面加上<code>break</code>了。</p>
 <p><strong>default 标签</strong>：当没有任何一个<code>case</code>标签能匹配上<code>switch</code>表达式的值时，程序将执行紧跟在<code>default</code>后面的语句。每一个<code>switch</code>语句。</p>
-<h2 id="5-4-迭代语句"><a href="#5-4-迭代语句" class="headerlink" title="5.4 迭代语句"></a>5.4 迭代语句</h2><h2 id="5-5-跳转语句"><a href="#5-5-跳转语句" class="headerlink" title="5.5 跳转语句"></a>5.5 跳转语句</h2><h2 id="5-6-try-语句块和异常处理"><a href="#5-6-try-语句块和异常处理" class="headerlink" title="5.6 try 语句块和异常处理"></a>5.6 <code>try</code> 语句块和异常处理</h2>
+<h2 id="5-4-迭代语句"><a href="#5-4-迭代语句" class="headerlink" title="5.4 迭代语句"></a>5.4 迭代语句</h2><h3 id="5-4-3-范围for语句"><a href="#5-4-3-范围for语句" class="headerlink" title="5.4.3 范围for语句"></a>5.4.3 范围<code>for</code>语句</h3><p><strong>序列</strong>：可以返回迭代器<code>begin</code>和<code>end</code>的成员。采用范围<code>for</code>语句时，在迭代过程中修改序列结果，可能会导致循环体的尾指针失效。</p>
+<h2 id="5-5-跳转语句"><a href="#5-5-跳转语句" class="headerlink" title="5.5 跳转语句"></a>5.5 跳转语句</h2><p>C++ 提供了4种跳转语句：<code>break</code>、<code>continue</code>、<code>goto</code>、<code>return</code>。</p>
+<h3 id="5-5-1-break语句"><a href="#5-5-1-break语句" class="headerlink" title="5.5.1 break语句"></a>5.5.1 <code>break</code>语句</h3><h2 id="5-6-try-语句块和异常处理"><a href="#5-6-try-语句块和异常处理" class="headerlink" title="5.6 try 语句块和异常处理"></a>5.6 <code>try</code> 语句块和异常处理</h2>
     </div>
 
     
@@ -363,7 +373,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-5-语句"><span class="nav-number">1.</span> <span class="nav-text">Chapter 5 语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-简单语句"><span class="nav-number">1.1.</span> <span class="nav-text">5.1 简单语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-语句作用域"><span class="nav-number">1.2.</span> <span class="nav-text">5.2 语句作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-条件语句"><span class="nav-number">1.3.</span> <span class="nav-text">5.3 条件语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-2-switch-语句"><span class="nav-number">1.3.1.</span> <span class="nav-text">5.3.2  switch 语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-迭代语句"><span class="nav-number">1.4.</span> <span class="nav-text">5.4 迭代语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-跳转语句"><span class="nav-number">1.5.</span> <span class="nav-text">5.5 跳转语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-6-try-语句块和异常处理"><span class="nav-number">1.6.</span> <span class="nav-text">5.6 try 语句块和异常处理</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter-5-语句"><span class="nav-number">1.</span> <span class="nav-text">Chapter 5 语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-简单语句"><span class="nav-number">1.1.</span> <span class="nav-text">5.1 简单语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-语句作用域"><span class="nav-number">1.2.</span> <span class="nav-text">5.2 语句作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-3-条件语句"><span class="nav-number">1.3.</span> <span class="nav-text">5.3 条件语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-2-switch-语句"><span class="nav-number">1.3.1.</span> <span class="nav-text">5.3.2  switch 语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-4-迭代语句"><span class="nav-number">1.4.</span> <span class="nav-text">5.4 迭代语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-3-范围for语句"><span class="nav-number">1.4.1.</span> <span class="nav-text">5.4.3 范围for语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-5-跳转语句"><span class="nav-number">1.5.</span> <span class="nav-text">5.5 跳转语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-1-break语句"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.5.1 break语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-6-try-语句块和异常处理"><span class="nav-number">1.6.</span> <span class="nav-text">5.6 try 语句块和异常处理</span></a></li></ol></li></ol></div>
             
 
           </div>
