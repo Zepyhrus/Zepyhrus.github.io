@@ -233,7 +233,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-11-28 18:21:19" itemprop="dateModified" datetime="2019-11-28T18:21:19+08:00">2019-11-28</time>
+                <time title="Modified: 2020-01-03 17:44:07" itemprop="dateModified" datetime="2020-01-03T17:44:07+08:00">2020-01-03</time>
               </span>
             
           
@@ -406,7 +406,7 @@
 <li><code>self._fallback_candidates</code>是一个<code>set</code>,它的特点是其中的元素是独一无二的，定义这个的作用是记录可正常读取的数据索引，因为有的数据可能无法正常读取，所以这个时候我们就可以把这个坏数据的索引从<code>_fallback_candidates</code>中剔除，并随机采样一个索引来读取数据。</li>
 <li><code>__getitem__</code>中的逻辑就是首先读取指定索引的数据，如果正常读取就把该所索引值加入到<code>_fallback_candidates</code>中去；反之，如果数据无法读取，则将对应索引值删除，并随机采样一个数据，并且尝试3次，若3次后都无法正常读取数据，则报错，但是好像也没有退出程序，而是继续读数据，可能是以为总有能正常读取的数据吧;</li>
 </ul>
-<h2 id="3-Debug"><a href="#3-Debug" class="headerlink" title="3. Debug"></a>3. Debug</h2><h3 id="3-1-Using-ground-py"><a href="#3-1-Using-ground-py" class="headerlink" title="3.1 Using ground.py"></a>3.1 Using ground.py</h3><h2 id="4-Training"><a href="#4-Training" class="headerlink" title="4. Training"></a>4. Training</h2><h3 id="4-1-Train-on-COCO"><a href="#4-1-Train-on-COCO" class="headerlink" title="4.1 Train on COCO"></a>4.1 Train on COCO</h3><p>Using 1 image per batch, cause the desktop can’t afford 2 images per batch.</p>
+<h2 id="3-Debug"><a href="#3-Debug" class="headerlink" title="3. Debug"></a>3. Debug</h2><h3 id="3-1-Using-ground-py"><a href="#3-1-Using-ground-py" class="headerlink" title="3.1 Using ground.py"></a>3.1 Using ground.py</h3><h2 id="4-Training"><a href="#4-Training" class="headerlink" title="4. Training"></a>4. Training</h2><h3 id="4-1-在COCO数据集上训练"><a href="#4-1-在COCO数据集上训练" class="headerlink" title="4.1 在COCO数据集上训练"></a>4.1 在COCO数据集上训练</h3><p>Using 1 image per batch, cause the desktop can’t afford 2 images per batch.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python tools/train_net.py \</span><br><span class="line">	--config-file configs/COCO-Keypoints/keypoint_rcnn_R_50_FPN_1x.yaml \</span><br><span class="line">	SOLVER.IMS_PER_BATCH 1 SOLVER.BASE_LR 0.0025</span><br></pre></td></tr></table></figure>
 
 <p>Training parameters:</p>
@@ -415,6 +415,7 @@
 <li>89999 iterations;</li>
 <li>The training log is saved to log_1127_first_training.txt;</li>
 </ul>
+<h3 id="4-2-训练流程"><a href="#4-2-训练流程" class="headerlink" title="4.2 训练流程"></a>4.2 训练流程</h3><p>主要训练函数为<code>tools/train_net.py</code>中的<code>main</code>函数，<code>launch</code>函数将训练过程分布化，在当前阶段暂时不予深究。</p>
 <h2 id="5-Validation"><a href="#5-Validation" class="headerlink" title="5. Validation"></a>5. Validation</h2><p>python demo/demo.py <br>  –config-file configs/COCO-Keypoints/keypoint_rcnn_R_50_FPN_1x.yaml <br>  –input comunity/1574912817253.png <br>  –opts MODEL.WEIGHTS weights/COCO-Keypoints/model_final_04e291.pkl</p>
 
           
@@ -486,7 +487,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-12-03 20:25:29" itemprop="dateModified" datetime="2019-12-03T20:25:29+08:00">2019-12-03</time>
+                <time title="Modified: 2019-12-03 20:58:17" itemprop="dateModified" datetime="2019-12-03T20:58:17+08:00">2019-12-03</time>
               </span>
             
           
@@ -520,7 +521,16 @@
 <p><strong>default 标签</strong>：当没有任何一个<code>case</code>标签能匹配上<code>switch</code>表达式的值时，程序将执行紧跟在<code>default</code>后面的语句。每一个<code>switch</code>语句。</p>
 <h2 id="5-4-迭代语句"><a href="#5-4-迭代语句" class="headerlink" title="5.4 迭代语句"></a>5.4 迭代语句</h2><h3 id="5-4-3-范围for语句"><a href="#5-4-3-范围for语句" class="headerlink" title="5.4.3 范围for语句"></a>5.4.3 范围<code>for</code>语句</h3><p><strong>序列</strong>：可以返回迭代器<code>begin</code>和<code>end</code>的成员。采用范围<code>for</code>语句时，在迭代过程中修改序列结果，可能会导致循环体的尾指针失效。</p>
 <h2 id="5-5-跳转语句"><a href="#5-5-跳转语句" class="headerlink" title="5.5 跳转语句"></a>5.5 跳转语句</h2><p>C++ 提供了4种跳转语句：<code>break</code>、<code>continue</code>、<code>goto</code>、<code>return</code>。</p>
-<h3 id="5-5-1-break语句"><a href="#5-5-1-break语句" class="headerlink" title="5.5.1 break语句"></a>5.5.1 <code>break</code>语句</h3><h2 id="5-6-try-语句块和异常处理"><a href="#5-6-try-语句块和异常处理" class="headerlink" title="5.6 try 语句块和异常处理"></a>5.6 <code>try</code> 语句块和异常处理</h2>
+<h3 id="5-5-1-break语句"><a href="#5-5-1-break语句" class="headerlink" title="5.5.1 break语句"></a>5.5.1 <code>break</code>语句</h3><p><code>break</code>语句的作用范围仅限于最近的循环或者<code>switch</code>。</p>
+<h3 id="5-5-2-continue语句"><a href="#5-5-2-continue语句" class="headerlink" title="5.5.2 continue语句"></a>5.5.2 <code>continue</code>语句</h3><p><code>continue</code>语句只出现在<code>for</code>、<code>while</code>、<code>do while</code>循环内，或者嵌套在此类循环的语句或块的内部。</p>
+<h3 id="5-5-3-goto语句"><a href="#5-5-3-goto语句" class="headerlink" title="5.5.3 goto语句"></a>5.5.3 <code>goto</code>语句</h3><p>hmmmm，没什么可说的。</p>
+<h2 id="5-6-try语句"><a href="#5-6-try语句" class="headerlink" title="5.6 try语句"></a>5.6 <code>try</code>语句</h2><ul>
+<li><code>throw</code>表达式；</li>
+<li><code>try</code>语句块；</li>
+<li>一套<strong>异常</strong>类。</li>
+</ul>
+<h3 id="5-6-1-throw表达式"><a href="#5-6-1-throw表达式" class="headerlink" title="5.6.1 throw表达式"></a>5.6.1 <code>throw</code>表达式</h3><p>见练习5.22.cpp。</p>
+<h3 id="5-6-2-try语句块"><a href="#5-6-2-try语句块" class="headerlink" title="5.6.2 try语句块"></a>5.6.2 <code>try</code>语句块</h3><h2 id="5-6-try-语句块和异常处理"><a href="#5-6-try-语句块和异常处理" class="headerlink" title="5.6 try 语句块和异常处理"></a>5.6 <code>try</code> 语句块和异常处理</h2>
           
         
       
@@ -1692,7 +1702,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
