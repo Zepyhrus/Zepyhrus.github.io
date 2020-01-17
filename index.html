@@ -233,7 +233,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-17 14:00:09" itemprop="dateModified" datetime="2020-01-17T14:00:09+08:00">2020-01-17</time>
+                <time title="Modified: 2020-01-17 17:46:41" itemprop="dateModified" datetime="2020-01-17T17:46:41+08:00">2020-01-17</time>
               </span>
             
           
@@ -264,7 +264,40 @@
 <h3 id="6-2-2-传引用参数"><a href="#6-2-2-传引用参数" class="headerlink" title="6.2.2 传引用参数"></a>6.2.2 传引用参数</h3><p><strong>使用引用避免拷贝</strong>：拷贝大的类类型对象或者容器对象比较低效，甚至有的类类型（包括IO类型在内）不支持拷贝操作，函数只能通过引用形参访问该类型对象。如果函数无须改变引用形参的值，最好将其声明为常量引用。</p>
 <p><strong>使用形参返回额外信息</strong>：给函数传入额外的引用实参，来达到隐式的返回额外参数的目的。</p>
 <h3 id="6-2-3-const形参和实参"><a href="#6-2-3-const形参和实参" class="headerlink" title="6.2.3 const形参和实参"></a>6.2.3 const形参和实参</h3><p><strong>指针或引用形参与const</strong>：形参的初始化方式和变量的初始化方式是一样的，所以可以使用非常量初始化一个底层<code>const</code>对象，但是反过来不行。同时一个普通的引用必须用同类型的对象初始化。</p>
+<h3 id="6-2-4-数组形参"><a href="#6-2-4-数组形参" class="headerlink" title="6.2.4 数组形参"></a>6.2.4 数组形参</h3><p>数组的两个特殊性质对定义和使用作用在数组的函数有影响：</p>
+<ul>
+<li>不允许拷贝数组；</li>
+<li>使用数组时通常会将其转化为指针；</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>*)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>[])</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>[<span class="number">10</span>])</span></span>;</span><br></pre></td></tr></table></figure>
 
+<p>以上三种函数都是等价的。因为数组是以指针的形式传递给函数的，所以一开始函数并不知道数组的确切尺寸，调用者应该为此提供一些额外的信息。管理指针形参有三种常用的技术。</p>
+<p><strong>使用标记指定数组长度</strong>：要求数组本身包含一个结束标记，比如C风格字符串。C风格字符串存储的字符串数组中，在最后一个字符后面跟着一个空字符。函数在处理C风格字符串时遇到空字符停止：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *cp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (cp)</span><br><span class="line">    <span class="keyword">while</span> (*cp)</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; *cp++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该方法仅适用于那些有明显结束标记且该标记不会与普通数据混淆的情况。</p>
+<p><strong>使用标准库规范</strong>： 传递指向数组首元素和<strong>尾后</strong>元素的指针，该方法收到了标准库技术的启发。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> *beg, <span class="keyword">const</span> <span class="keyword">int</span> *end)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 输出beg到end之间（不含end）的所有元素</span></span><br><span class="line">  <span class="keyword">while</span> (beg != end)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *beg++ &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> j[<span class="number">3</span>] = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>&#125;;</span><br><span class="line"></span><br><span class="line">print(begin(j), end(j));</span><br></pre></td></tr></table></figure>
+
+<p><strong>显式传递一个表示数组大小的形参</strong>：专门指定一个表示数组大小的形参，在C程序和过去的C++程序中常常采用这种方法。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// const int ia[] 等价于const int* ia</span></span><br><span class="line"><span class="comment">// size 表示数组的大小，将它显式地传给函数用于控制对ia元素的访问</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> ia[], <span class="keyword">size_t</span> size)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i != size; ++i) &#123; <span class="built_in">cout</span> &lt;&lt; ia[i] &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只要传递给函数的size值不超过数组实际的大小，函数就是安全的。</p>
+<p><strong>数组形参和const</strong>： 当函数不需要对数组元素执行写操作的时候，数组形参应该是指向<code>const</code>的指针。只有当函数确实要改变元素值的时候，才把形参定义成指向非常量的指针。</p>
+<p><strong>数组引用形参</strong>：C++语言允许将变量定义成数组的引用，基于同样的道理，形参也可以是数组的引用。此时，引用形参绑定到对应的实参上，也就是绑定到数组上。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> (&amp;arr)[<span class="number">10</span>])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">auto</span> elem : arr)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; elem &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// f(int &amp;arr[10])    // error: 将arr声明为了引用数组</span></span><br><span class="line"><span class="comment">// f(int (&amp;arr)[10])  // right: arr是具有10个整数的整型数组的引用</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>传递多维数组</strong>：数组的数组，其首元素本身就是一个数组，指针就是一个指向数组的指针。数组第二维的大小都是数组类型的一部分。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> (*matrix)[<span class="number">10</span>], <span class="keyword">int</span> rowSize)</span> </span>&#123; <span class="comment">/* ... */</span> &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> matrix[][<span class="number">10</span>], <span class="keyword">int</span> rowSize)</span> </span>&#123; <span class="comment">/* ... */</span> &#125;   <span class="comment">// 与上等价</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// int *matrix[10];     // 10个指针构成的数组</span></span><br><span class="line"><span class="comment">// int (*matrix)[10];   // 指向含有10个整数数组的指针</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-2-5-main-处理命令行选项"><a href="#6-2-5-main-处理命令行选项" class="headerlink" title="6.2.5 main: 处理命令行选项"></a>6.2.5 main: 处理命令行选项</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>** argv)</span> </span>&#123; <span class="comment">/* ... */</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>第二个形参<code>argv</code>是一个数组，它的元素是指向C风格字符串的指针；</li>
+<li>第一个形参<code>argc</code>表示数组中字符串的数量；</li>
+</ul>
+<p><strong>WARNING</strong>：当使用<code>argv</code>中的实参数时，一定要记得可选的实参从<code>argv[1]</code>开始，<code>argv[0]</code>保存程序的名字，而非用户的输入。</p>
+<h3 id="6-2-6-含有可变形参的函数"><a href="#6-2-6-含有可变形参的函数" class="headerlink" title="6.2.6 含有可变形参的函数"></a>6.2.6 含有可变形参的函数</h3>
           
         
       
