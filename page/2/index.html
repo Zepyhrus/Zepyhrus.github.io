@@ -190,6 +190,250 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/23/CPP-Primer-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zepyhrus">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+              <a href="/2019/07/23/CPP-Primer-Notes/" class="post-title-link" itemprop="url">CPP-Primer-Notes</a>
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-07-23 10:05:28" itemprop="dateCreated datePublished" datetime="2019-07-23T10:05:28+08:00">2019-07-23</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-08-26 11:29:29" itemprop="dateModified" datetime="2019-08-26T11:29:29+08:00">2019-08-26</time>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h1 id="Chapter-2-Varibales-and-Basic-Types"><a href="#Chapter-2-Varibales-and-Basic-Types" class="headerlink" title="Chapter 2 Varibales and Basic Types"></a>Chapter 2 Varibales and Basic Types</h1><p>Some languages, such as Smalltalk and Python, check types at run time. In contrast, C++ is a statically typed language: type checking is done at compile time.<br>As a consequence, the compiler must know the type of every name used in the program.</p>
+<p><strong>Types determine</strong> the meaning of the data and operations in our programs.</p>
+<h2 id="2-1-Primitive-Built-in-Types"><a href="#2-1-Primitive-Built-in-Types" class="headerlink" title="2.1 Primitive Built-in Types"></a>2.1 Primitive Built-in Types</h2><p>Includes <strong>arithmetic types</strong> and <code>void</code>. The <code>void</code> type has no associated values and can be used in only a few circumestances.</p>
+<h3 id="2-1-1-Arithmetic-Types"><a href="#2-1-1-Arithmetic-Types" class="headerlink" title="2.1.1 Arithmetic Types"></a>2.1.1 Arithmetic Types</h3><p>Includes <strong>integral types</strong> and <strong>floating-point types</strong>. The standard guarantees minimum sizes of different type. Different compiler are allowed to use larger sizes for these tyes.  </p>
+<ul>
+<li>Q: What is significant digits?</li>
+<li>A: Effective decimal numbers<ul>
+<li><strong>float</strong> has 6 significant digits minimum;</li>
+<li><strong>double</strong> has 10 signifiicant digits minimum;</li>
+</ul>
+</li>
+</ul>
+<p>A <code>char</code> is the same size as a single machine <code>byte</code>. A “word” si referred to a small number of bytes. Most computers a byte contains 8 bits and a word is either 32 or 63 bits, that is, 4 or 8 bytes.</p>
+<p>The <strong>Type</strong> determins how many bits are used and how to interpret those bits.</p>
+<p><strong>Signed an Unsigned Types</strong><br>The types <code>int</code>, <code>short</code>, <code>long</code>, <code>long long</code> are all signed. The type <code>unsigned int</code> may be abbreviated as <code>unsigned</code>.</p>
+<p>There are 3 distinct basic character types: <code>char</code>, <code>unsigned char</code>, <code>signed char</code>. Which of the other two character representatinos is equivalent to <code>char</code> depends on the compiler.  </p>
+<p>IN an unsigned type, all the bits represent the value. An 8-bit <code>unsigned</code> char can hold the values from 0 through 255 inclusize. An 8-bit <code>signed</code> char is guaranteed to be able to hold values from -127 through 127. Most modern machines use representations that allow values from -128 through 127.</p>
+<ul>
+<li>Do not use plain <code>char</code> or <code>bool</code> in arithmetic expressions. Use them <em>only</em> to hold characters or thuth values. Computtations using <code>char</code> are especially problematic because <code>char</code> is signed on some machines and <code>unsigned</code> on others.</li>
+<li>Use <code>double</code> for floating-point computatins. <code>float</code> usually odes not have enough precision and the cosst of double-percision calculations versus single-precision is negligible. In fact, on some machines, <strong>double-precision operations are faster than single</strong>[P34].</li>
+</ul>
+<h3 id="2-1-2-Type-Conversions"><a href="#2-1-2-Type-Conversions" class="headerlink" title="2.1.2 Type Conversions"></a>2.1.2 Type Conversions</h3><ol>
+<li>non<code>bool</code> arithmetic types to a <code>bool</code> object, the result is <code>false</code> if the value is 0 and <code>true</code> otherwise;</li>
+<li><code>bool true</code> is 1 and <code>bool false</code> is 0;</li>
+<li>Assigning a floating-point value to an object of integral type, the value is truncated.</li>
+<li>When an integral value to an object of floating-point type, the frational part is zero. Precision may be lost ifg the integer has more bits than the floating-point object can accommodate.  </li>
+<li>OOR (out-of-range) value to unsigned type, the result is the remainder of the value modulo the number of values the target type can hold.</li>
+<li>OOR value to signed type, the reult is <strong>undefined</strong>. Undefined behavior results from errors that the compiler is not requierd to detect.</li>
+</ol>
+<h3 id="2-1-3-Literals"><a href="#2-1-3-Literals" class="headerlink" title="2.1.3 Literals"></a>2.1.3 Literals</h3><p><strong>Integer and Floating-Point Literals</strong>：</p>
+<ul>
+<li>decimal: You should know what a decimal is you stpuid fuck;</li>
+<li>octal: Integer literals that begin with 0, for example 024;</li>
+<li>hexadecimal: Integer literals that begin with 0x or 0X;</li>
+</ul>
+<p><strong>Note</strong>: For a negative decimal literal, -42, the minus sign is <em>not</em> part of the literal, the minus sign is an operator that negates the value of its (literal) operand.</p>
+<p><strong>Character and Character String Literals</strong>：<br>The compiler appends a null character (<code>\0</code>) to every string literal. Thus the actual size of a string literal is one more than its apparent size.</p>
+<p><strong>Escape Sequences</strong>：An <strong>escape sequence</strong> begins with a backslash.  </p>
+<p><strong>Specifying the Type of a Literal</strong><br>We can override the default type of an integer, floating-point, or character lietral by supylying a suffix or prefix from Table 2.2 [P40];</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">42U</span>LL     <span class="comment">// unsigned integer litearal, type is unsigned long long</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Boolean and Pointer Literals</strong>:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> test = <span class="literal">false</span>;  <span class="comment">// true or false are literals of type bool;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-2-Variables"><a href="#2-2-Variables" class="headerlink" title="2.2 Variables"></a>2.2 Variables</h2><h3 id="2-2-1-Variable-Definitions"><a href="#2-2-1-Variable-Definitions" class="headerlink" title="2.2.1 Variable Definitions"></a>2.2.1 Variable Definitions</h3><p>Most generally, an object is a region of memory that can contain data and has a type.</p>
+<p><strong>Initilaizer</strong>: An object gets the specified value at the moment it is created.</p>
+<p>The initialization an d assignment are different operations in C++. Initialization happens when a variable is given a value when it is created. Assignment obliterates an object’s current value and replaces that value with a new one.</p>
+<p><strong>List Initialization</strong>:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> units_sold = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> units_sold&#123;<span class="number">0</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>The curly braces for initializeation was introduced as part of the new standard, which is referred to as <strong>list initalization</strong>.</p>
+<p><strong>Import</strong>: this form of initialization will not be allowed if the initializer might lead to the loss of information by compiler.</p>
+<p><strong>Default INitialization</strong>:<br>When a varibale is defined without an initializer, it is <strong>default initialized</strong>. One excpetion, variables of built-in type defined inside a function are <strong>uninitialized</strong>.</p>
+<h3 id="2-2-2-Variable-Declarations-and-Definitions"><a href="#2-2-2-Variable-Declarations-and-Definitions" class="headerlink" title="2.2.2 Variable Declarations and Definitions"></a>2.2.2 Variable Declarations and Definitions</h3><p>Use <code>extern</code> to explict declare variable without defination. It is an error to provide an initializer on an <code>extern</code> inside a function. <code>extern</code> with an initializer is an defination.  </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> i;  <span class="comment">// declares but does not define i</span></span><br><span class="line"><span class="keyword">int</span> j;         <span class="comment">// declares and defines j</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Note</strong>: Varibales must be defined exactly once but can be declared many times.</p>
+<h3 id="2-2-3-Identifiers"><a href="#2-2-3-Identifiers" class="headerlink" title="2.2.3 Identifiers"></a>2.2.3 Identifiers</h3><ul>
+<li>The identifier in programs may not contain two consective underscores;</li>
+<li>Nor can an identifier begin with an underscore followed immediately by an uppercase letter;</li>
+<li>Identifiers defined outside a function may not begin with an underscore.</li>
+</ul>
+<h3 id="2-2-4-Scope-of-a-Name"><a href="#2-2-4-Scope-of-a-Name" class="headerlink" title="2.2.4 Scope of a Name"></a>2.2.4 Scope of a Name</h3><p><strong>Nested Scopes</strong>: The global scope has no name, hence when the scope operator has an empty left-hand side, it is a request to fetch the name on the right-hand side from the global scope.</p>
+<h2 id="2-3-Compound-Types"><a href="#2-3-Compound-Types" class="headerlink" title="2.3 Compound Types"></a>2.3 Compound Types</h2><p>A <strong>compound type</strong> is a type thas is defined in terms of another type, including <strong>references</strong> and <strong>pointers</strong>.<br>A declaration is a <strong>base type</strong> followed by a list of <strong>declarators</strong>.</p>
+<h3 id="2-3-1-References"><a href="#2-3-1-References" class="headerlink" title="2.3.1 References"></a>2.3.1 References</h3><p><em>Reference</em> refers to “lvalue reference”, instead of “rvalue reference” introduced in new standard. A <strong>reference</strong> defines an alternative name for an object.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival = <span class="number">1024</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;refVal = ival;</span><br><span class="line"><span class="keyword">int</span> &amp;refVal2;</span><br></pre></td></tr></table></figure>
+
+<p><strong>A Reference Is an Alias</strong><br>The reference is <strong>bound</strong> to its initializer, and there is no way to rebind a reference to refer to a different object. A reference <em>must</em> be initialized.<br>A reference is just another name for an already existing object.<br>After a reference has been defined, <em>all</em> operations on that reference are actuall operations on the object to which the reference is bound.</p>
+<p><strong>Reference Denfinitions</strong><br>With 2 exceptions that will be covered in S 2.4.1 and 15.2.3, the type of reference and the obect to which the reference refers must match exactly. A reference may be bound only to an object, not to a literal or to the result of a more general experession.<br>[cmake]  </p>
+<h3 id="2-3-2-Pointers"><a href="#2-3-2-Pointers" class="headerlink" title="2.3.2 Pointers"></a>2.3.2 Pointers</h3><p>A <strong>Pointer</strong> is a compound type that “points to” another type.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *ip1, *ip2;</span><br><span class="line"><span class="keyword">double</span> dp, *dp2;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Taking the Address of an Object</strong><br>A poiter holds the address of another object. We get the address of an object by usin the address-of operator (the <strong>&amp; operator</strong>).</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> *p = &amp;ival;  <span class="comment">// p holds the address of ival; p is a pointer to ival</span></span><br></pre></td></tr></table></figure>
+
+<p>With 2 excpetion will be covered in S:2.4.2 and S:15.2.3, the typees of the pointer and the object ot which it points must muatch.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> dval;</span><br><span class="line"><span class="keyword">double</span> *pd = &amp;dval;</span><br><span class="line"><span class="keyword">double</span> *pd2 = pd;</span><br><span class="line"><span class="keyword">int</span> *pi = pd;</span><br><span class="line">pi = &amp;dval;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Point Value</strong><br>The walue (i.e., the address) stored in a pointer can be in one of four states:</p>
+<ol>
+<li>An object;</li>
+<li>The location just immediately past the end of an object;</li>
+<li>A unll pointer, indicating that is is not bound to any object;</li>
+<li>Invalid, values other than the preceding three are invalid.</li>
+</ol>
+<p><strong>Using a Pointer to Access an Object</strong><br>Ust the dereference operator (the <strong>*</strong> operator) to access the object:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> *p = *ival;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; *p;</span><br></pre></td></tr></table></figure>
+
+<p>Dereferencoing a pointer yields the object ot which the pointer points.</p>
+<p><strong>Note</strong>: Some symbols have multiple meannings</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;r = i;</span><br><span class="line"><span class="keyword">int</span> *p;</span><br><span class="line">p = &amp;i;         <span class="comment">//  &amp; used as the address-of operation</span></span><br><span class="line">*p = i          <span class="comment">//  * used as dereference operation</span></span><br><span class="line"><span class="keyword">int</span> &amp;r2 = *p;   <span class="comment">//  &amp; as part of the declaration, * as derefernec operation</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Null Pointer</strong>:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> *p1 = <span class="literal">nullptr</span>;</span><br><span class="line"><span class="keyword">int</span> *p2 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* must #include cstdlib */</span></span><br><span class="line"><span class="keyword">int</span> *p3 = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<p>Older programs sometimes use a <strong>preprocessor variable</strong> named <code>NULL</code>, which the <code>cstdlib</code> header defines as 0. A <strong>preprocessor</strong> is a program that runs before the compiler. Preprocessor varibales are managed by the preprocessor, and are not part of the <code>std</code> namespace.</p>
+<p><strong>Assignment and Pointers</strong><br>A reference is not an object.  </p>
+<p><strong>Other Pointer Operations</strong><br>Any nonzero pointer evalutaes as <code>true</code>. Two pointers are equal if they hold the same address or both are null pointers. In continously memory, a pointer one past the end of a different object ot heldo the same ddress as a pointer to an object.</p>
+<p><strong><code>void*</code> Pointers</strong><br>The type <code>void*</code> is a special pointer type that can hold the address of any object, it holds an address but the type of the object at that address is unknown. Generally, a <code>void*</code> pointer is used to dieal with memory as memory, rather than using the pointer to access the object stored in that memory.</p>
+<h3 id="2-3-3-Understanding-Compound-Type-Declarations"><a href="#2-3-3-Understanding-Compound-Type-Declarations" class="headerlink" title="2.3.3 Understanding Compound Type Declarations"></a>2.3.3 Understanding Compound Type Declarations</h3><p><strong>Defining Multiple Variable</strong>: It could be really confusing, put whitespace between the type modifier and the name being declared. Use <strong>First Style</strong> to declare variables.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>* p1, p2;  <span class="comment">//  p1 is a pointer to int; p2 is an int</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Pointer to Pointers</strong>: We indicate each pointer level by its own *. ** for a pointer to a pointer, *** for a pointer to a pointer to a pointer.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ival = <span class="number">1024</span>;</span><br><span class="line"><span class="keyword">int</span> * pi = &amp;ival;   <span class="comment">//  pi points to an int</span></span><br><span class="line"><span class="keyword">int</span> **ppi = &amp;pi;    <span class="comment">//  ppi points to a pointer points to an int</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"The value of ival\n"</span></span><br><span class="line">     &lt;&lt; <span class="string">"direct value: "</span> &lt;&lt; ival &lt;&lt; <span class="string">"\n"</span></span><br><span class="line">     &lt;&lt; <span class="string">"indirect value: "</span> &lt;&lt; *pi &lt;&lt; <span class="string">"\n"</span></span><br><span class="line">     &lt;&lt; <span class="string">"doubly indirect value: "</span> &lt;&lt; **ppi  <span class="comment">// deference twice</span></span><br><span class="line">     &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Reference to Pointers</strong>: A reference is not an object. Hence we may not have a pointer to a reference. But we can define a reference to a pointer.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> val = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> *pi;</span><br><span class="line"><span class="keyword">int</span> *&amp;r = pi; <span class="comment">//  r is a reference to pi</span></span><br><span class="line">r = &amp;val; <span class="comment">// r is a reference, assign to r equals to assigning to pi</span></span><br><span class="line">*r = <span class="number">0</span>; <span class="comment">//  dereference r yields i, this is assigning i to be 0</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Notes</strong>: As illustrate above, you can use <code>**pi</code> to indicate a pointer pointing to a pointer, but you can’t use <code>&amp;&amp;p</code> to indicate a reference refering to a reference, cause reference is not a project.</p>
+<h2 id="const-Qualifier"><a href="#const-Qualifier" class="headerlink" title="const Qualifier"></a><code>const</code> Qualifier</h2><p>Since wo can’t change the value of <code>const</code>, it must be initialized.</p>
+<p><strong>By Default, <code>const</code> Objects Are Local to a File</strong>: When a <code>const</code> object is initialized from a compile-time constant, the compiler will usually repalce uses of the varibale with its corresponding value during compilation. When we define a <code>const</code> with the same name in multiple files, it is as if we had written definitions for separate variables in each file. If a single instance of a <code>const</code> variable, we use the keyword <code>extern</code> on both its definition and declaration(s).</p>
+<p>e.g., if you what to share <code>const</code> accross different files, you must define the varibale as <code>extern</code>.</p>
+<h3 id="2-4-1-Reference-to-const"><a href="#2-4-1-Reference-to-const" class="headerlink" title="2.4.1 Reference to const"></a>2.4.1 Reference to <code>const</code></h3><p>A reference to <code>const</code> cannot be used to change the object to which the reference is bound.<br><strong>TERMINOLOGY</strong>: <code>const</code> Reference is a reference to <code>const</code>.</p>
+<p><strong>Initialization and References to <code>const</code></strong>: One of the 2 exceptions to the rule that the type of a reference must match the type  of the object to which it refers: we can initialize a reference to <code>const</code> from any expression that can be converted to the type of the reference.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;r1 = i;        <span class="comment">//  we can bind a const int&amp; to a plain</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;r2 = <span class="number">42</span>;       <span class="comment">//  ok: r1 is a reference to const</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;r3 = r1 * <span class="number">2</span>;   <span class="comment">//  ok: r3 is a reference to const</span></span><br><span class="line"><span class="keyword">int</span> &amp;r4 = r1 * <span class="number">2</span>;         <span class="comment">//  error: r4 is a nonconst reference</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Important: AReference to <code>const</code> May Refer to an Object That is Not <code>const</code></strong>:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;r1 = i;        <span class="comment">//  r1 bound to i</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;r2 = i;  <span class="comment">//  r2 also bound to i; but connot be used to change i;</span></span><br><span class="line">r1 = <span class="number">0</span>;             <span class="comment">//  r1 is not const; i is now 0</span></span><br><span class="line">r2 = <span class="number">0</span>;             <span class="comment">//  error: r2 is a reference to const</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-2-Pointers-and-const"><a href="#2-4-2-Pointers-and-const" class="headerlink" title="2.4.2 Pointers and const"></a>2.4.2 Pointers and <code>const</code></h3><p>Like a reference to <code>cost</code>, a pointer to const may not be used to change the object to which the pointer points.<br><strong>Important</strong>: There is no guarantee that an object pointed to by a pointer to <code>const</code> won’t change.</p>
+<p><strong><code>const</code> Pointers</strong>: We indicate that the pointer is <code>const</code> by putting the <code>const</code> after *.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> errNumb = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> *<span class="keyword">const</span> curErr = &amp;errNumb;     <span class="comment">//  curErr will always point to errNumb</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="number">3.14159</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> *<span class="keyword">const</span> pip = &amp;pi;    <span class="comment">//  pip is a const pointer to a const object</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-4-3-Top-level-const"><a href="#2-4-3-Top-level-const" class="headerlink" title="2.4.3 Top-level const"></a>2.4.3 Top-level <code>const</code></h3><p>The term <strong>top-level const</strong> to indicate that the pointer itself is a const. When a pointer can point to a const object, we refer to that const as a low-level const.</p>
+<h3 id="2-4-4-constexpr-and-Constant-Expressions"><a href="#2-4-4-constexpr-and-Constant-Expressions" class="headerlink" title="2.4.4 constexpr and Constant Expressions"></a>2.4.4 <code>constexpr</code> and Constant Expressions</h3><p>A <strong>constant expression</strong> is an expression whose value cannot change tnd that can be evalutaed at compile time.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> max_files = <span class="number">20</span>;         <span class="comment">//  this is const expression</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> limit = max_files + <span class="number">1</span>;  <span class="comment">//  this is const expression</span></span><br><span class="line"><span class="keyword">int</span> staff_size = <span class="number">27</span>;        <span class="comment">//  not a constant expression</span></span><br><span class="line">cnost <span class="keyword">int</span> sz = get_size();  <span class="comment">//  not a constant because it is not known util run time</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>C++ 11</strong>: Under new standard, we can aske the compiler to verify that a varibale is a constant expression by declaring the varibale in a <code>constexpr</code> declaration. Also a function simple enough to be evaluate at compile time could also be used as <code>constexpr</code>.</p>
+<p><strong>Literal Types</strong>: The types that we can use in a <code>constexpr</code> are known as “literal types” because they are simple enough to have literal values.</p>
+<p><strong>Pointers and <code>constexpr</code></strong>: When we define a pointer in a <code>constexpr</code> declaration, the <code>constexpr</code> specifier applies to the pointer, not the type to which the pointer points.</p>
+<h2 id="2-5-Dealing-with-Types"><a href="#2-5-Dealing-with-Types" class="headerlink" title="2.5 Dealing with Types"></a>2.5 Dealing with Types</h2><h3 id="2-5-1-Type-Aliases"><a href="#2-5-1-Type-Aliases" class="headerlink" title="2.5.1 Type Aliases"></a>2.5.1 Type Aliases</h3><p>A type alias is a name that is a synonym for another type, whichi simplyfing complicated type definitions, making those types easier to use.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">double</span> wages;</span><br><span class="line"><span class="keyword">typedef</span> wages base, *p;</span><br></pre></td></tr></table></figure>
+
+<p>The new standard introduced a second way to define a type alias, via an alias declaration:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> SI = Sales_item;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Pointers, <code>const</code>, nad Type Aliases</strong>:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> *pstring;</span><br><span class="line"><span class="keyword">const</span> pstring cstr = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *cstr = <span class="number">0</span>;   <span class="comment">//  this is illegal</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-5-2-The-auto-Type-Specifier"><a href="#2-5-2-The-auto-Type-Specifier" class="headerlink" title="2.5.2 The auto Type Specifier"></a>2.5.2 The <code>auto</code> Type Specifier</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> item = val1 + val2;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-6-Deifining-Our-Own-Data-Structures"><a href="#2-6-Deifining-Our-Own-Data-Structures" class="headerlink" title="2.6 Deifining Our Own Data Structures"></a>2.6 Deifining Our Own Data Structures</h2><h3 id="2-6-1-Defining-the-Sales-data-Type"><a href="#2-6-1-Defining-the-Sales-data-Type" class="headerlink" title="2.6.1 Defining the Sales_data Type"></a>2.6.1 Defining the Sales_data Type</h3><p>The close curly that ends the class body must be fgollowed by a semicolon, so we can define varibales after the class body:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Sales_data</span> &#123;</span></span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">string</span> bookNo;</span><br><span class="line">  <span class="keyword">unsigned</span> units_sold = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">double</span> revenue = <span class="number">0.0</span>;</span><br><span class="line">&#125; accum, trans, *salesptr;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Class Data Members</strong>: A type of members in a struct.</p>
+<h3 id="2-6-2-Using-the-Sales-data-Class"><a href="#2-6-2-Using-the-Sales-data-Class" class="headerlink" title="2.6.2 Using the Sales_data Class"></a>2.6.2 Using the Sales_data Class</h3><h3 id="2-6-3-Wrinting-Our-Own-Header-Files"><a href="#2-6-3-Wrinting-Our-Own-Header-Files" class="headerlink" title="2.6.3 Wrinting Our Own Header Files"></a>2.6.3 Wrinting Our Own Header Files</h3><p>A header might be included more than twice, we need to write our headers in a way that is safe even if the header is included multiple time.</p>
+<p><strong>Note</strong>: Whenever a header is updated, the source files that use that header must be recompiled to get the new or changed declarations.</p>
+<p><strong>A Brief Introduction to the Preprocessor</strong>: The most common technique for making it safe to include a header multiple times relies on the <strong>preprocessor</strong>, which inherts from C is a progrom that runs before the compiler and changes the source text of our programs. <code>#include</code> is a processor.</p>
+<p><strong>WARNING</strong>: Preprocessor variable names do not respect C++ scoping rules.</p>
+<p><strong>Note</strong>: What is <strong>Header guards</strong> ?</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* header guards for sales data */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> SALES_DATA_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SALES_DATA_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>  SALES_DATA_H</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Acknowledgmets"><a href="#Acknowledgmets" class="headerlink" title="Acknowledgmets"></a>Acknowledgmets</h2><ul>
+<li>With all respect to Mr. Zeng Xianliang, my colleague, who introduced this stunning book to me which he himself never really read it;</li>
+<li>Full respect to the author of the book: Cpp Primer, Stanley B. Lippman, Josee Lajoie, Barbara E. Moo. Their great works perserves;</li>
+<li>Didn’t came up who else is helping me with it at current stage.</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/04/Deep-Learning-Environment/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -485,7 +729,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
