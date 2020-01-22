@@ -233,7 +233,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-01-22 14:37:40" itemprop="dateModified" datetime="2020-01-22T14:37:40+08:00">2020-01-22</time>
+                <time title="Modified: 2020-01-22 16:14:13" itemprop="dateModified" datetime="2020-01-22T16:14:13+08:00">2020-01-22</time>
               </span>
             
           
@@ -374,6 +374,42 @@
 <p>该命令等价于在<code>main.cc</code>文件的一开始写#define NDEBUG。如果NDEBUG没有定义，将执行#ifndef和#endif之间的代码；如果定义了NDEBUG，这些代码将被忽略。</p>
 <p>除了<code>__func__</code>之外，预处理器还提供了另外4个对于程序调试很有用的名字：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__FILE__; <span class="comment">// 存放文件名的字符串字面值</span></span><br><span class="line">__LINE__; <span class="comment">// 存放当前行号的整型字面值</span></span><br><span class="line">__TIME__; <span class="comment">// 存放文件编译时间的字符串字面值</span></span><br><span class="line">__DATE__; <span class="comment">// 存放文件编译日期的字符串字面值</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-6-函数匹配"><a href="#6-6-函数匹配" class="headerlink" title="6.6 函数匹配"></a>6.6 函数匹配</h2><p><strong>确定候选函数和可行函数</strong>：函数匹配的第一步是选定本次调用对应的重载函数集，集合中的函数称为<strong>候选函数</strong>。候选函数具备两个特征：1. 与被调函数同名，2. 其声明在调用点可见。</p>
+<p>第二步考察本次调用提供的实参，然后选择能被这组实参调用的函数，这些新的函数称为<strong>可行函数</strong>。</p>
+<p>第三步是从可行函数中选择与本次调用匹配最佳的函数。基本思想是实参类型与形参类型越接近，它们的匹配度越高。</p>
+<p><strong>含有多个形参的函数匹配</strong>：编译器依次检查每个实参以确定哪个函数是最佳匹配。如果有且只有一个函数满足下列条件，则匹配成功：</p>
+<ul>
+<li>该函数每个实参的匹配都不劣于其他可行函数需要的匹配；</li>
+<li>至少有一个实参的匹配由于其他可行函数提供的匹配；</li>
+</ul>
+<p>如果检查了所有实参之后，没有任何一个函数脱颖而出，则该调用是错误的，编译器将报告二义性调用。</p>
+<h3 id="6-6-1-实参类型转换"><a href="#6-6-1-实参类型转换" class="headerlink" title="6.6.1 实参类型转换"></a>6.6.1 实参类型转换</h3><p>编译器将实参类型到形参类型的转换分为以下几个等级：</p>
+<ol>
+<li>精确匹配：<ul>
+<li>实参类型和形参类型相同；</li>
+<li>实参从数组类型或函数类型转换成对应的指针类型；</li>
+<li>向实参添加顶层const或者从实参中删除顶层const；</li>
+</ul>
+</li>
+<li>通过const转换实现的匹配；</li>
+<li>通过类型提升实现的匹配；</li>
+<li>通过算数类型转换或指针转换实现的匹配；</li>
+<li>通过类类型转换实现的匹配；</li>
+</ol>
+<p><strong>需要类型提升和算术类型转换的匹配</strong>：小整型一般都会提升到int或更大的整数类型。且所有算术类型的转换的级别都一样，从int向unsigned int的转换并不比从int向double的转换级别高。</p>
+<p><strong>函数匹配和const实参</strong>：如果重载函数的区别在于它们的引用类型的形参是否引用了const，或者指针类型的形参是否指向const，则当调用发生时编译器通过实参是否是常量来决定选择哪个函数。</p>
+<h2 id="6-7-函数指针"><a href="#6-7-函数指针" class="headerlink" title="6.7 函数指针"></a>6.7 函数指针</h2><p>函数指针指向的是函数而非对象。和其他指针一样，函数指针指向某种特定类型。函数的类型由它的返回类型和形参共同决定，与函数名无关。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">length_compare</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;, <span class="keyword">const</span> <span class="built_in">string</span> &amp;)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// pf 指向一个函数，该函数的参数是两个const string的引用，返回值是bool类型</span></span><br><span class="line"><span class="comment">// pf 两端的括号不可少，否则pf是一个返回值为bool指针的函数</span></span><br><span class="line"><span class="keyword">bool</span> (*pf)(<span class="keyword">const</span> <span class="built_in">string</span> &amp;, <span class="keyword">const</span> <span class="built_in">string</span> &amp;); <span class="comment">// 未初始化</span></span><br></pre></td></tr></table></figure>
+
+<p><code>lenght_compare</code>的类型是<code>bool(const string&amp;, const string &amp;)</code>。</p>
+<p><strong>使用函数指针</strong>：当我们把函数名作为一个值使用时，该函数自动地转换成指针。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pf = length_compare;    <span class="comment">// pf指向名为length_compare的函数</span></span><br><span class="line"></span><br><span class="line">pf = &amp;length_compare;   <span class="comment">// 等价的赋值语句：取地址符是可以的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> b1 = pf(<span class="string">"hello"</span>, <span class="string">"world"</span>);   <span class="comment">// 调用length_compare而无须提前解引指针</span></span><br><span class="line"><span class="keyword">bool</span> b2 = (*pf)(<span class="string">"hello"</span>, <span class="string">"world"</span>); <span class="comment">// 一个等价的调用</span></span><br><span class="line"><span class="keyword">bool</span> b3 = lenght_compare(<span class="string">"hello"</span>, <span class="string">"world"</span>); <span class="comment">// 另一个等价的调用</span></span><br></pre></td></tr></table></figure>
+
+<p>在指向不同函数类型的指针间不存在转换规则。但是可以为函数指针赋也各nullptr或者值为0的整型常量表达式，表示该指针没有指向任何一个函数。</p>
+<p><strong>重载函数的指针</strong>：当使用重载函数时，上下文必须清晰地界定到底应该引用哪个函数。</p>
+<p><strong>函数指针形参</strong>：和数组类似，虽然不能定义函数类型的形参，但是形参可以是指向函数的指针。此时，形参看起来是函数类型，实际上却是当成指针使用。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">useBigger</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;s1, <span class="keyword">const</span> <span class="built_in">string</span> &amp;s2, <span class="keyword">bool</span> pf(<span class="keyword">const</span> <span class="built_in">string</span> &amp;, <span class="keyword">const</span> <span class="built_in">string</span> &amp;))</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">useBigger</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;s1, <span class="keyword">const</span> <span class="built_in">string</span> &amp;s2, <span class="keyword">bool</span> (*pf)(<span class="keyword">const</span> <span class="built_in">string</span> &amp;, <span class="keyword">const</span> <span class="built_in">string</span> &amp;))</span></span>;</span><br></pre></td></tr></table></figure>
 
 
           
